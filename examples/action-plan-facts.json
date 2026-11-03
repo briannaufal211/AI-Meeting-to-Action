@@ -1,0 +1,23 @@
+[
+  {
+    "id": "F0001",
+    "source_ids": [
+      "S00001"
+    ],
+    "quote": "Pencatatan inventaris belum seragam antar cabang."
+  },
+  {
+    "id": "F0002",
+    "source_ids": [
+      "S00002"
+    ],
+    "quote": "Daftar penanggung jawab dan prosedur pembaruan belum jelas."
+  },
+  {
+    "id": "F0003",
+    "source_ids": [
+      "S00003"
+    ],
+    "quote": "Kita perlu mencoba perbaikan pada satu cabang lebih dulu."
+  }
+]

@@ -1,0 +1,220 @@
+[
+  {
+    "id": "F0001",
+    "text": "Transkrip menyebut rapat berlangsung pada 2 November 2026 dan membahas uji coba pencatatan inventaris; nama, gudang, masalah, dan tanggal dalam transkrip dinyatakan rekaan untuk demonstrasi portofolio.",
+    "quote": "Tanggal rapat: 2 November 2026",
+    "source_ids": [
+      "S00001",
+      "S00002"
+    ],
+    "context": [
+      {
+        "id": "S00001",
+        "text": "TRANSKRIP DEMO REKAAN — bukan rekaman atau data klien.\nJudul: Rapat Uji Coba Pencatatan Inventaris\nTanggal rapat: 2 November 2026\nPeserta rekaan: Rina (koordinator), Budi (operasional), Sari (administrasi).\n\nRina: Hari ini kita membahas uji coba pencatatan inventaris. Masalah dalam skenario rekaan ini adalah pencatatan barang masuk dan keluar masih dilakukan pada lembar yang terpisah. Kita belum memiliki angka selisih stok yang terverifikasi.\nBudi: Saya mengusulkan agar uji coba dibatasi pada Gudang A. Kita mulai dari daftar barang yang sudah ada dan mencatat setiap transaksi pada satu format bersama.\nRina: Saya setuju. Keputusan rapat adalah melakukan uji coba pencatatan pada Gudang A, bukan langsung menerapkan ke semua gudang. Tanggal mulai uji coba belum ditentukan.\nSari: Untuk format pencatatan, saya akan menyiapkan kolom kode barang, nama barang, jumlah masuk, jumlah keluar, saldo, tanggal transaksi, dan nama petugas. Draf format akan saya siapkan pada 5 November 2026.\nBudi: Saya akan menyiapkan daftar barang awal untuk Gudang A paling lambat 6 November 2026. Jumlah barang belum saya pastikan sehingga jangan menuliskan angka perkiraan sebagai data final.\nRina: Baik. Setelah da"
+      },
+      {
+        "id": "S00002",
+        "text": "ftar barang dan format tersedia, kita akan menentukan tanggal mulai bersama. Saya akan mengoordinasikan pertemuan berikutnya, tetapi jadwalnya belum disepakati.\nSari: Apakah kita perlu membeli pemindai barcode untuk uji coba ini?\nRina: Belum ada keputusan membeli perangkat. Barcode masih usulan untuk dievaluasi. Anggaran belum ditetapkan dan belum disetujui.\nBudi: Sebagai usulan, kita bisa memeriksa sampel transaksi untuk melihat kelengkapan isian. Besar sampel dan target keberhasilannya masih perlu dibahas.\nRina: Kita catat itu sebagai usulan evaluasi, bukan target yang sudah disepakati. Untuk saat ini keputusan dan tugas yang pasti adalah uji coba di Gudang A, draf format oleh Sari, dan daftar barang awal oleh Budi. Pembelian barcode, tanggal mulai, anggaran, serta ukuran sampel masih perlu konfirmasi.\nSari: Saya setuju. Ringkasan dan presentasi sebaiknya membedakan keputusan, tugas yang disepakati, serta rekomendasi tambahan agar tidak tercampur.\nRina: Rapat selesai. Semua nama, gudang, masalah, dan tanggal dalam transkrip ini adalah data rekaan untuk demonstrasi portofolio.\n"
+      }
+    ]
+  },
+  {
+    "id": "F0002",
+    "text": "Dalam skenario rekaan, pencatatan barang masuk dan keluar masih dilakukan pada lembar terpisah, dan belum ada angka selisih stok yang terverifikasi.",
+    "quote": "pencatatan barang masuk dan keluar masih dilakukan pada lembar yang terpisah",
+    "source_ids": [
+      "S00001"
+    ],
+    "context": [
+      {
+        "id": "S00001",
+        "text": "TRANSKRIP DEMO REKAAN — bukan rekaman atau data klien.\nJudul: Rapat Uji Coba Pencatatan Inventaris\nTanggal rapat: 2 November 2026\nPeserta rekaan: Rina (koordinator), Budi (operasional), Sari (administrasi).\n\nRina: Hari ini kita membahas uji coba pencatatan inventaris. Masalah dalam skenario rekaan ini adalah pencatatan barang masuk dan keluar masih dilakukan pada lembar yang terpisah. Kita belum memiliki angka selisih stok yang terverifikasi.\nBudi: Saya mengusulkan agar uji coba dibatasi pada Gudang A. Kita mulai dari daftar barang yang sudah ada dan mencatat setiap transaksi pada satu format bersama.\nRina: Saya setuju. Keputusan rapat adalah melakukan uji coba pencatatan pada Gudang A, bukan langsung menerapkan ke semua gudang. Tanggal mulai uji coba belum ditentukan.\nSari: Untuk format pencatatan, saya akan menyiapkan kolom kode barang, nama barang, jumlah masuk, jumlah keluar, saldo, tanggal transaksi, dan nama petugas. Draf format akan saya siapkan pada 5 November 2026.\nBudi: Saya akan menyiapkan daftar barang awal untuk Gudang A paling lambat 6 November 2026. Jumlah barang belum saya pastikan sehingga jangan menuliskan angka perkiraan sebagai data final.\nRina: Baik. Setelah da"
+      },
+      {
+        "id": "S00002",
+        "text": "ftar barang dan format tersedia, kita akan menentukan tanggal mulai bersama. Saya akan mengoordinasikan pertemuan berikutnya, tetapi jadwalnya belum disepakati.\nSari: Apakah kita perlu membeli pemindai barcode untuk uji coba ini?\nRina: Belum ada keputusan membeli perangkat. Barcode masih usulan untuk dievaluasi. Anggaran belum ditetapkan dan belum disetujui.\nBudi: Sebagai usulan, kita bisa memeriksa sampel transaksi untuk melihat kelengkapan isian. Besar sampel dan target keberhasilannya masih perlu dibahas.\nRina: Kita catat itu sebagai usulan evaluasi, bukan target yang sudah disepakati. Untuk saat ini keputusan dan tugas yang pasti adalah uji coba di Gudang A, draf format oleh Sari, dan daftar barang awal oleh Budi. Pembelian barcode, tanggal mulai, anggaran, serta ukuran sampel masih perlu konfirmasi.\nSari: Saya setuju. Ringkasan dan presentasi sebaiknya membedakan keputusan, tugas yang disepakati, serta rekomendasi tambahan agar tidak tercampur.\nRina: Rapat selesai. Semua nama, gudang, masalah, dan tanggal dalam transkrip ini adalah data rekaan untuk demonstrasi portofolio.\n"
+      }
+    ]
+  },
+  {
+    "id": "F0003",
+    "text": "Usulan Budi adalah membatasi uji coba pada Gudang A, memulai dari daftar barang yang ada, dan mencatat transaksi dalam satu format bersama.",
+    "quote": "Saya mengusulkan agar uji coba dibatasi pada Gudang A.",
+    "source_ids": [
+      "S00001"
+    ],
+    "context": [
+      {
+        "id": "S00001",
+        "text": "TRANSKRIP DEMO REKAAN — bukan rekaman atau data klien.\nJudul: Rapat Uji Coba Pencatatan Inventaris\nTanggal rapat: 2 November 2026\nPeserta rekaan: Rina (koordinator), Budi (operasional), Sari (administrasi).\n\nRina: Hari ini kita membahas uji coba pencatatan inventaris. Masalah dalam skenario rekaan ini adalah pencatatan barang masuk dan keluar masih dilakukan pada lembar yang terpisah. Kita belum memiliki angka selisih stok yang terverifikasi.\nBudi: Saya mengusulkan agar uji coba dibatasi pada Gudang A. Kita mulai dari daftar barang yang sudah ada dan mencatat setiap transaksi pada satu format bersama.\nRina: Saya setuju. Keputusan rapat adalah melakukan uji coba pencatatan pada Gudang A, bukan langsung menerapkan ke semua gudang. Tanggal mulai uji coba belum ditentukan.\nSari: Untuk format pencatatan, saya akan menyiapkan kolom kode barang, nama barang, jumlah masuk, jumlah keluar, saldo, tanggal transaksi, dan nama petugas. Draf format akan saya siapkan pada 5 November 2026.\nBudi: Saya akan menyiapkan daftar barang awal untuk Gudang A paling lambat 6 November 2026. Jumlah barang belum saya pastikan sehingga jangan menuliskan angka perkiraan sebagai data final.\nRina: Baik. Setelah da"
+      },
+      {
+        "id": "S00002",
+        "text": "ftar barang dan format tersedia, kita akan menentukan tanggal mulai bersama. Saya akan mengoordinasikan pertemuan berikutnya, tetapi jadwalnya belum disepakati.\nSari: Apakah kita perlu membeli pemindai barcode untuk uji coba ini?\nRina: Belum ada keputusan membeli perangkat. Barcode masih usulan untuk dievaluasi. Anggaran belum ditetapkan dan belum disetujui.\nBudi: Sebagai usulan, kita bisa memeriksa sampel transaksi untuk melihat kelengkapan isian. Besar sampel dan target keberhasilannya masih perlu dibahas.\nRina: Kita catat itu sebagai usulan evaluasi, bukan target yang sudah disepakati. Untuk saat ini keputusan dan tugas yang pasti adalah uji coba di Gudang A, draf format oleh Sari, dan daftar barang awal oleh Budi. Pembelian barcode, tanggal mulai, anggaran, serta ukuran sampel masih perlu konfirmasi.\nSari: Saya setuju. Ringkasan dan presentasi sebaiknya membedakan keputusan, tugas yang disepakati, serta rekomendasi tambahan agar tidak tercampur.\nRina: Rapat selesai. Semua nama, gudang, masalah, dan tanggal dalam transkrip ini adalah data rekaan untuk demonstrasi portofolio.\n"
+      }
+    ]
+  },
+  {
+    "id": "F0004",
+    "text": "Keputusan rapat adalah menguji pencatatan di Gudang A, bukan langsung menerapkannya ke semua gudang.",
+    "quote": "Keputusan rapat adalah melakukan uji coba pencatatan pada Gudang A, bukan langsung menerapkan ke semua gudang.",
+    "source_ids": [
+      "S00001"
+    ],
+    "context": [
+      {
+        "id": "S00001",
+        "text": "TRANSKRIP DEMO REKAAN — bukan rekaman atau data klien.\nJudul: Rapat Uji Coba Pencatatan Inventaris\nTanggal rapat: 2 November 2026\nPeserta rekaan: Rina (koordinator), Budi (operasional), Sari (administrasi).\n\nRina: Hari ini kita membahas uji coba pencatatan inventaris. Masalah dalam skenario rekaan ini adalah pencatatan barang masuk dan keluar masih dilakukan pada lembar yang terpisah. Kita belum memiliki angka selisih stok yang terverifikasi.\nBudi: Saya mengusulkan agar uji coba dibatasi pada Gudang A. Kita mulai dari daftar barang yang sudah ada dan mencatat setiap transaksi pada satu format bersama.\nRina: Saya setuju. Keputusan rapat adalah melakukan uji coba pencatatan pada Gudang A, bukan langsung menerapkan ke semua gudang. Tanggal mulai uji coba belum ditentukan.\nSari: Untuk format pencatatan, saya akan menyiapkan kolom kode barang, nama barang, jumlah masuk, jumlah keluar, saldo, tanggal transaksi, dan nama petugas. Draf format akan saya siapkan pada 5 November 2026.\nBudi: Saya akan menyiapkan daftar barang awal untuk Gudang A paling lambat 6 November 2026. Jumlah barang belum saya pastikan sehingga jangan menuliskan angka perkiraan sebagai data final.\nRina: Baik. Setelah da"
+      },
+      {
+        "id": "S00002",
+        "text": "ftar barang dan format tersedia, kita akan menentukan tanggal mulai bersama. Saya akan mengoordinasikan pertemuan berikutnya, tetapi jadwalnya belum disepakati.\nSari: Apakah kita perlu membeli pemindai barcode untuk uji coba ini?\nRina: Belum ada keputusan membeli perangkat. Barcode masih usulan untuk dievaluasi. Anggaran belum ditetapkan dan belum disetujui.\nBudi: Sebagai usulan, kita bisa memeriksa sampel transaksi untuk melihat kelengkapan isian. Besar sampel dan target keberhasilannya masih perlu dibahas.\nRina: Kita catat itu sebagai usulan evaluasi, bukan target yang sudah disepakati. Untuk saat ini keputusan dan tugas yang pasti adalah uji coba di Gudang A, draf format oleh Sari, dan daftar barang awal oleh Budi. Pembelian barcode, tanggal mulai, anggaran, serta ukuran sampel masih perlu konfirmasi.\nSari: Saya setuju. Ringkasan dan presentasi sebaiknya membedakan keputusan, tugas yang disepakati, serta rekomendasi tambahan agar tidak tercampur.\nRina: Rapat selesai. Semua nama, gudang, masalah, dan tanggal dalam transkrip ini adalah data rekaan untuk demonstrasi portofolio.\n"
+      }
+    ]
+  },
+  {
+    "id": "F0005",
+    "text": "Tanggal mulai uji coba belum ditentukan; setelah daftar barang dan format tersedia, tanggal itu akan ditentukan bersama.",
+    "quote": "Tanggal mulai uji coba belum ditentukan.",
+    "source_ids": [
+      "S00001",
+      "S00002"
+    ],
+    "context": [
+      {
+        "id": "S00001",
+        "text": "TRANSKRIP DEMO REKAAN — bukan rekaman atau data klien.\nJudul: Rapat Uji Coba Pencatatan Inventaris\nTanggal rapat: 2 November 2026\nPeserta rekaan: Rina (koordinator), Budi (operasional), Sari (administrasi).\n\nRina: Hari ini kita membahas uji coba pencatatan inventaris. Masalah dalam skenario rekaan ini adalah pencatatan barang masuk dan keluar masih dilakukan pada lembar yang terpisah. Kita belum memiliki angka selisih stok yang terverifikasi.\nBudi: Saya mengusulkan agar uji coba dibatasi pada Gudang A. Kita mulai dari daftar barang yang sudah ada dan mencatat setiap transaksi pada satu format bersama.\nRina: Saya setuju. Keputusan rapat adalah melakukan uji coba pencatatan pada Gudang A, bukan langsung menerapkan ke semua gudang. Tanggal mulai uji coba belum ditentukan.\nSari: Untuk format pencatatan, saya akan menyiapkan kolom kode barang, nama barang, jumlah masuk, jumlah keluar, saldo, tanggal transaksi, dan nama petugas. Draf format akan saya siapkan pada 5 November 2026.\nBudi: Saya akan menyiapkan daftar barang awal untuk Gudang A paling lambat 6 November 2026. Jumlah barang belum saya pastikan sehingga jangan menuliskan angka perkiraan sebagai data final.\nRina: Baik. Setelah da"
+      },
+      {
+        "id": "S00002",
+        "text": "ftar barang dan format tersedia, kita akan menentukan tanggal mulai bersama. Saya akan mengoordinasikan pertemuan berikutnya, tetapi jadwalnya belum disepakati.\nSari: Apakah kita perlu membeli pemindai barcode untuk uji coba ini?\nRina: Belum ada keputusan membeli perangkat. Barcode masih usulan untuk dievaluasi. Anggaran belum ditetapkan dan belum disetujui.\nBudi: Sebagai usulan, kita bisa memeriksa sampel transaksi untuk melihat kelengkapan isian. Besar sampel dan target keberhasilannya masih perlu dibahas.\nRina: Kita catat itu sebagai usulan evaluasi, bukan target yang sudah disepakati. Untuk saat ini keputusan dan tugas yang pasti adalah uji coba di Gudang A, draf format oleh Sari, dan daftar barang awal oleh Budi. Pembelian barcode, tanggal mulai, anggaran, serta ukuran sampel masih perlu konfirmasi.\nSari: Saya setuju. Ringkasan dan presentasi sebaiknya membedakan keputusan, tugas yang disepakati, serta rekomendasi tambahan agar tidak tercampur.\nRina: Rapat selesai. Semua nama, gudang, masalah, dan tanggal dalam transkrip ini adalah data rekaan untuk demonstrasi portofolio.\n"
+      }
+    ]
+  },
+  {
+    "id": "F0006",
+    "text": "Sari ditugaskan menyiapkan format dengan kolom kode barang, nama barang, jumlah masuk, jumlah keluar, saldo, tanggal transaksi, dan nama petugas; draf ditargetkan pada 5 November 2026.",
+    "quote": "Draf format akan saya siapkan pada 5 November 2026.",
+    "source_ids": [
+      "S00001"
+    ],
+    "context": [
+      {
+        "id": "S00001",
+        "text": "TRANSKRIP DEMO REKAAN — bukan rekaman atau data klien.\nJudul: Rapat Uji Coba Pencatatan Inventaris\nTanggal rapat: 2 November 2026\nPeserta rekaan: Rina (koordinator), Budi (operasional), Sari (administrasi).\n\nRina: Hari ini kita membahas uji coba pencatatan inventaris. Masalah dalam skenario rekaan ini adalah pencatatan barang masuk dan keluar masih dilakukan pada lembar yang terpisah. Kita belum memiliki angka selisih stok yang terverifikasi.\nBudi: Saya mengusulkan agar uji coba dibatasi pada Gudang A. Kita mulai dari daftar barang yang sudah ada dan mencatat setiap transaksi pada satu format bersama.\nRina: Saya setuju. Keputusan rapat adalah melakukan uji coba pencatatan pada Gudang A, bukan langsung menerapkan ke semua gudang. Tanggal mulai uji coba belum ditentukan.\nSari: Untuk format pencatatan, saya akan menyiapkan kolom kode barang, nama barang, jumlah masuk, jumlah keluar, saldo, tanggal transaksi, dan nama petugas. Draf format akan saya siapkan pada 5 November 2026.\nBudi: Saya akan menyiapkan daftar barang awal untuk Gudang A paling lambat 6 November 2026. Jumlah barang belum saya pastikan sehingga jangan menuliskan angka perkiraan sebagai data final.\nRina: Baik. Setelah da"
+      },
+      {
+        "id": "S00002",
+        "text": "ftar barang dan format tersedia, kita akan menentukan tanggal mulai bersama. Saya akan mengoordinasikan pertemuan berikutnya, tetapi jadwalnya belum disepakati.\nSari: Apakah kita perlu membeli pemindai barcode untuk uji coba ini?\nRina: Belum ada keputusan membeli perangkat. Barcode masih usulan untuk dievaluasi. Anggaran belum ditetapkan dan belum disetujui.\nBudi: Sebagai usulan, kita bisa memeriksa sampel transaksi untuk melihat kelengkapan isian. Besar sampel dan target keberhasilannya masih perlu dibahas.\nRina: Kita catat itu sebagai usulan evaluasi, bukan target yang sudah disepakati. Untuk saat ini keputusan dan tugas yang pasti adalah uji coba di Gudang A, draf format oleh Sari, dan daftar barang awal oleh Budi. Pembelian barcode, tanggal mulai, anggaran, serta ukuran sampel masih perlu konfirmasi.\nSari: Saya setuju. Ringkasan dan presentasi sebaiknya membedakan keputusan, tugas yang disepakati, serta rekomendasi tambahan agar tidak tercampur.\nRina: Rapat selesai. Semua nama, gudang, masalah, dan tanggal dalam transkrip ini adalah data rekaan untuk demonstrasi portofolio.\n"
+      }
+    ]
+  },
+  {
+    "id": "F0007",
+    "text": "Budi ditugaskan menyiapkan daftar barang awal untuk Gudang A paling lambat 6 November 2026; jumlah barang belum dipastikan dan angka perkiraan tidak boleh ditulis sebagai data final.",
+    "quote": "paling lambat 6 November 2026",
+    "source_ids": [
+      "S00001"
+    ],
+    "context": [
+      {
+        "id": "S00001",
+        "text": "TRANSKRIP DEMO REKAAN — bukan rekaman atau data klien.\nJudul: Rapat Uji Coba Pencatatan Inventaris\nTanggal rapat: 2 November 2026\nPeserta rekaan: Rina (koordinator), Budi (operasional), Sari (administrasi).\n\nRina: Hari ini kita membahas uji coba pencatatan inventaris. Masalah dalam skenario rekaan ini adalah pencatatan barang masuk dan keluar masih dilakukan pada lembar yang terpisah. Kita belum memiliki angka selisih stok yang terverifikasi.\nBudi: Saya mengusulkan agar uji coba dibatasi pada Gudang A. Kita mulai dari daftar barang yang sudah ada dan mencatat setiap transaksi pada satu format bersama.\nRina: Saya setuju. Keputusan rapat adalah melakukan uji coba pencatatan pada Gudang A, bukan langsung menerapkan ke semua gudang. Tanggal mulai uji coba belum ditentukan.\nSari: Untuk format pencatatan, saya akan menyiapkan kolom kode barang, nama barang, jumlah masuk, jumlah keluar, saldo, tanggal transaksi, dan nama petugas. Draf format akan saya siapkan pada 5 November 2026.\nBudi: Saya akan menyiapkan daftar barang awal untuk Gudang A paling lambat 6 November 2026. Jumlah barang belum saya pastikan sehingga jangan menuliskan angka perkiraan sebagai data final.\nRina: Baik. Setelah da"
+      },
+      {
+        "id": "S00002",
+        "text": "ftar barang dan format tersedia, kita akan menentukan tanggal mulai bersama. Saya akan mengoordinasikan pertemuan berikutnya, tetapi jadwalnya belum disepakati.\nSari: Apakah kita perlu membeli pemindai barcode untuk uji coba ini?\nRina: Belum ada keputusan membeli perangkat. Barcode masih usulan untuk dievaluasi. Anggaran belum ditetapkan dan belum disetujui.\nBudi: Sebagai usulan, kita bisa memeriksa sampel transaksi untuk melihat kelengkapan isian. Besar sampel dan target keberhasilannya masih perlu dibahas.\nRina: Kita catat itu sebagai usulan evaluasi, bukan target yang sudah disepakati. Untuk saat ini keputusan dan tugas yang pasti adalah uji coba di Gudang A, draf format oleh Sari, dan daftar barang awal oleh Budi. Pembelian barcode, tanggal mulai, anggaran, serta ukuran sampel masih perlu konfirmasi.\nSari: Saya setuju. Ringkasan dan presentasi sebaiknya membedakan keputusan, tugas yang disepakati, serta rekomendasi tambahan agar tidak tercampur.\nRina: Rapat selesai. Semua nama, gudang, masalah, dan tanggal dalam transkrip ini adalah data rekaan untuk demonstrasi portofolio.\n"
+      }
+    ]
+  },
+  {
+    "id": "F0008",
+    "text": "Rina akan mengoordinasikan pertemuan berikutnya, tetapi jadwalnya belum disepakati.",
+    "quote": "Saya akan mengoordinasikan pertemuan berikutnya, tetapi jadwalnya belum disepakati.",
+    "source_ids": [
+      "S00002"
+    ],
+    "context": [
+      {
+        "id": "S00001",
+        "text": "TRANSKRIP DEMO REKAAN — bukan rekaman atau data klien.\nJudul: Rapat Uji Coba Pencatatan Inventaris\nTanggal rapat: 2 November 2026\nPeserta rekaan: Rina (koordinator), Budi (operasional), Sari (administrasi).\n\nRina: Hari ini kita membahas uji coba pencatatan inventaris. Masalah dalam skenario rekaan ini adalah pencatatan barang masuk dan keluar masih dilakukan pada lembar yang terpisah. Kita belum memiliki angka selisih stok yang terverifikasi.\nBudi: Saya mengusulkan agar uji coba dibatasi pada Gudang A. Kita mulai dari daftar barang yang sudah ada dan mencatat setiap transaksi pada satu format bersama.\nRina: Saya setuju. Keputusan rapat adalah melakukan uji coba pencatatan pada Gudang A, bukan langsung menerapkan ke semua gudang. Tanggal mulai uji coba belum ditentukan.\nSari: Untuk format pencatatan, saya akan menyiapkan kolom kode barang, nama barang, jumlah masuk, jumlah keluar, saldo, tanggal transaksi, dan nama petugas. Draf format akan saya siapkan pada 5 November 2026.\nBudi: Saya akan menyiapkan daftar barang awal untuk Gudang A paling lambat 6 November 2026. Jumlah barang belum saya pastikan sehingga jangan menuliskan angka perkiraan sebagai data final.\nRina: Baik. Setelah da"
+      },
+      {
+        "id": "S00002",
+        "text": "ftar barang dan format tersedia, kita akan menentukan tanggal mulai bersama. Saya akan mengoordinasikan pertemuan berikutnya, tetapi jadwalnya belum disepakati.\nSari: Apakah kita perlu membeli pemindai barcode untuk uji coba ini?\nRina: Belum ada keputusan membeli perangkat. Barcode masih usulan untuk dievaluasi. Anggaran belum ditetapkan dan belum disetujui.\nBudi: Sebagai usulan, kita bisa memeriksa sampel transaksi untuk melihat kelengkapan isian. Besar sampel dan target keberhasilannya masih perlu dibahas.\nRina: Kita catat itu sebagai usulan evaluasi, bukan target yang sudah disepakati. Untuk saat ini keputusan dan tugas yang pasti adalah uji coba di Gudang A, draf format oleh Sari, dan daftar barang awal oleh Budi. Pembelian barcode, tanggal mulai, anggaran, serta ukuran sampel masih perlu konfirmasi.\nSari: Saya setuju. Ringkasan dan presentasi sebaiknya membedakan keputusan, tugas yang disepakati, serta rekomendasi tambahan agar tidak tercampur.\nRina: Rapat selesai. Semua nama, gudang, masalah, dan tanggal dalam transkrip ini adalah data rekaan untuk demonstrasi portofolio.\n"
+      }
+    ]
+  },
+  {
+    "id": "F0009",
+    "text": "Pertanyaan Sari tentang perlu tidaknya membeli pemindai barcode tidak menghasilkan keputusan pembelian; barcode masih usulan untuk dievaluasi, sementara anggaran belum ditetapkan atau disetujui.",
+    "quote": "Belum ada keputusan membeli perangkat.",
+    "source_ids": [
+      "S00002"
+    ],
+    "context": [
+      {
+        "id": "S00001",
+        "text": "TRANSKRIP DEMO REKAAN — bukan rekaman atau data klien.\nJudul: Rapat Uji Coba Pencatatan Inventaris\nTanggal rapat: 2 November 2026\nPeserta rekaan: Rina (koordinator), Budi (operasional), Sari (administrasi).\n\nRina: Hari ini kita membahas uji coba pencatatan inventaris. Masalah dalam skenario rekaan ini adalah pencatatan barang masuk dan keluar masih dilakukan pada lembar yang terpisah. Kita belum memiliki angka selisih stok yang terverifikasi.\nBudi: Saya mengusulkan agar uji coba dibatasi pada Gudang A. Kita mulai dari daftar barang yang sudah ada dan mencatat setiap transaksi pada satu format bersama.\nRina: Saya setuju. Keputusan rapat adalah melakukan uji coba pencatatan pada Gudang A, bukan langsung menerapkan ke semua gudang. Tanggal mulai uji coba belum ditentukan.\nSari: Untuk format pencatatan, saya akan menyiapkan kolom kode barang, nama barang, jumlah masuk, jumlah keluar, saldo, tanggal transaksi, dan nama petugas. Draf format akan saya siapkan pada 5 November 2026.\nBudi: Saya akan menyiapkan daftar barang awal untuk Gudang A paling lambat 6 November 2026. Jumlah barang belum saya pastikan sehingga jangan menuliskan angka perkiraan sebagai data final.\nRina: Baik. Setelah da"
+      },
+      {
+        "id": "S00002",
+        "text": "ftar barang dan format tersedia, kita akan menentukan tanggal mulai bersama. Saya akan mengoordinasikan pertemuan berikutnya, tetapi jadwalnya belum disepakati.\nSari: Apakah kita perlu membeli pemindai barcode untuk uji coba ini?\nRina: Belum ada keputusan membeli perangkat. Barcode masih usulan untuk dievaluasi. Anggaran belum ditetapkan dan belum disetujui.\nBudi: Sebagai usulan, kita bisa memeriksa sampel transaksi untuk melihat kelengkapan isian. Besar sampel dan target keberhasilannya masih perlu dibahas.\nRina: Kita catat itu sebagai usulan evaluasi, bukan target yang sudah disepakati. Untuk saat ini keputusan dan tugas yang pasti adalah uji coba di Gudang A, draf format oleh Sari, dan daftar barang awal oleh Budi. Pembelian barcode, tanggal mulai, anggaran, serta ukuran sampel masih perlu konfirmasi.\nSari: Saya setuju. Ringkasan dan presentasi sebaiknya membedakan keputusan, tugas yang disepakati, serta rekomendasi tambahan agar tidak tercampur.\nRina: Rapat selesai. Semua nama, gudang, masalah, dan tanggal dalam transkrip ini adalah data rekaan untuk demonstrasi portofolio.\n"
+      }
+    ]
+  },
+  {
+    "id": "F0010",
+    "text": "Budi mengusulkan pemeriksaan sampel transaksi untuk melihat kelengkapan isian; besar sampel dan target keberhasilan masih perlu dibahas, dan usulan itu bukan target yang telah disepakati.",
+    "quote": "Besar sampel dan target keberhasilannya masih perlu dibahas.",
+    "source_ids": [
+      "S00002"
+    ],
+    "context": [
+      {
+        "id": "S00001",
+        "text": "TRANSKRIP DEMO REKAAN — bukan rekaman atau data klien.\nJudul: Rapat Uji Coba Pencatatan Inventaris\nTanggal rapat: 2 November 2026\nPeserta rekaan: Rina (koordinator), Budi (operasional), Sari (administrasi).\n\nRina: Hari ini kita membahas uji coba pencatatan inventaris. Masalah dalam skenario rekaan ini adalah pencatatan barang masuk dan keluar masih dilakukan pada lembar yang terpisah. Kita belum memiliki angka selisih stok yang terverifikasi.\nBudi: Saya mengusulkan agar uji coba dibatasi pada Gudang A. Kita mulai dari daftar barang yang sudah ada dan mencatat setiap transaksi pada satu format bersama.\nRina: Saya setuju. Keputusan rapat adalah melakukan uji coba pencatatan pada Gudang A, bukan langsung menerapkan ke semua gudang. Tanggal mulai uji coba belum ditentukan.\nSari: Untuk format pencatatan, saya akan menyiapkan kolom kode barang, nama barang, jumlah masuk, jumlah keluar, saldo, tanggal transaksi, dan nama petugas. Draf format akan saya siapkan pada 5 November 2026.\nBudi: Saya akan menyiapkan daftar barang awal untuk Gudang A paling lambat 6 November 2026. Jumlah barang belum saya pastikan sehingga jangan menuliskan angka perkiraan sebagai data final.\nRina: Baik. Setelah da"
+      },
+      {
+        "id": "S00002",
+        "text": "ftar barang dan format tersedia, kita akan menentukan tanggal mulai bersama. Saya akan mengoordinasikan pertemuan berikutnya, tetapi jadwalnya belum disepakati.\nSari: Apakah kita perlu membeli pemindai barcode untuk uji coba ini?\nRina: Belum ada keputusan membeli perangkat. Barcode masih usulan untuk dievaluasi. Anggaran belum ditetapkan dan belum disetujui.\nBudi: Sebagai usulan, kita bisa memeriksa sampel transaksi untuk melihat kelengkapan isian. Besar sampel dan target keberhasilannya masih perlu dibahas.\nRina: Kita catat itu sebagai usulan evaluasi, bukan target yang sudah disepakati. Untuk saat ini keputusan dan tugas yang pasti adalah uji coba di Gudang A, draf format oleh Sari, dan daftar barang awal oleh Budi. Pembelian barcode, tanggal mulai, anggaran, serta ukuran sampel masih perlu konfirmasi.\nSari: Saya setuju. Ringkasan dan presentasi sebaiknya membedakan keputusan, tugas yang disepakati, serta rekomendasi tambahan agar tidak tercampur.\nRina: Rapat selesai. Semua nama, gudang, masalah, dan tanggal dalam transkrip ini adalah data rekaan untuk demonstrasi portofolio.\n"
+      }
+    ]
+  },
+  {
+    "id": "F0011",
+    "text": "Rina merangkum bahwa keputusan dan tugas yang pasti adalah uji coba di Gudang A, draf format oleh Sari, dan daftar barang awal oleh Budi; pembelian barcode, tanggal mulai, anggaran, serta ukuran sampel masih perlu konfirmasi.",
+    "quote": "Pembelian barcode, tanggal mulai, anggaran, serta ukuran sampel masih perlu konfirmasi.",
+    "source_ids": [
+      "S00002"
+    ],
+    "context": [
+      {
+        "id": "S00001",
+        "text": "TRANSKRIP DEMO REKAAN — bukan rekaman atau data klien.\nJudul: Rapat Uji Coba Pencatatan Inventaris\nTanggal rapat: 2 November 2026\nPeserta rekaan: Rina (koordinator), Budi (operasional), Sari (administrasi).\n\nRina: Hari ini kita membahas uji coba pencatatan inventaris. Masalah dalam skenario rekaan ini adalah pencatatan barang masuk dan keluar masih dilakukan pada lembar yang terpisah. Kita belum memiliki angka selisih stok yang terverifikasi.\nBudi: Saya mengusulkan agar uji coba dibatasi pada Gudang A. Kita mulai dari daftar barang yang sudah ada dan mencatat setiap transaksi pada satu format bersama.\nRina: Saya setuju. Keputusan rapat adalah melakukan uji coba pencatatan pada Gudang A, bukan langsung menerapkan ke semua gudang. Tanggal mulai uji coba belum ditentukan.\nSari: Untuk format pencatatan, saya akan menyiapkan kolom kode barang, nama barang, jumlah masuk, jumlah keluar, saldo, tanggal transaksi, dan nama petugas. Draf format akan saya siapkan pada 5 November 2026.\nBudi: Saya akan menyiapkan daftar barang awal untuk Gudang A paling lambat 6 November 2026. Jumlah barang belum saya pastikan sehingga jangan menuliskan angka perkiraan sebagai data final.\nRina: Baik. Setelah da"
+      },
+      {
+        "id": "S00002",
+        "text": "ftar barang dan format tersedia, kita akan menentukan tanggal mulai bersama. Saya akan mengoordinasikan pertemuan berikutnya, tetapi jadwalnya belum disepakati.\nSari: Apakah kita perlu membeli pemindai barcode untuk uji coba ini?\nRina: Belum ada keputusan membeli perangkat. Barcode masih usulan untuk dievaluasi. Anggaran belum ditetapkan dan belum disetujui.\nBudi: Sebagai usulan, kita bisa memeriksa sampel transaksi untuk melihat kelengkapan isian. Besar sampel dan target keberhasilannya masih perlu dibahas.\nRina: Kita catat itu sebagai usulan evaluasi, bukan target yang sudah disepakati. Untuk saat ini keputusan dan tugas yang pasti adalah uji coba di Gudang A, draf format oleh Sari, dan daftar barang awal oleh Budi. Pembelian barcode, tanggal mulai, anggaran, serta ukuran sampel masih perlu konfirmasi.\nSari: Saya setuju. Ringkasan dan presentasi sebaiknya membedakan keputusan, tugas yang disepakati, serta rekomendasi tambahan agar tidak tercampur.\nRina: Rapat selesai. Semua nama, gudang, masalah, dan tanggal dalam transkrip ini adalah data rekaan untuk demonstrasi portofolio.\n"
+      }
+    ]
+  },
+  {
+    "id": "F0012",
+    "text": "Sari mengusulkan agar ringkasan dan presentasi membedakan keputusan, tugas yang disepakati, dan rekomendasi tambahan agar tidak tercampur.",
+    "quote": "Ringkasan dan presentasi sebaiknya membedakan keputusan, tugas yang disepakati, serta rekomendasi tambahan",
+    "source_ids": [
+      "S00002"
+    ],
+    "context": [
+      {
+        "id": "S00001",
+        "text": "TRANSKRIP DEMO REKAAN — bukan rekaman atau data klien.\nJudul: Rapat Uji Coba Pencatatan Inventaris\nTanggal rapat: 2 November 2026\nPeserta rekaan: Rina (koordinator), Budi (operasional), Sari (administrasi).\n\nRina: Hari ini kita membahas uji coba pencatatan inventaris. Masalah dalam skenario rekaan ini adalah pencatatan barang masuk dan keluar masih dilakukan pada lembar yang terpisah. Kita belum memiliki angka selisih stok yang terverifikasi.\nBudi: Saya mengusulkan agar uji coba dibatasi pada Gudang A. Kita mulai dari daftar barang yang sudah ada dan mencatat setiap transaksi pada satu format bersama.\nRina: Saya setuju. Keputusan rapat adalah melakukan uji coba pencatatan pada Gudang A, bukan langsung menerapkan ke semua gudang. Tanggal mulai uji coba belum ditentukan.\nSari: Untuk format pencatatan, saya akan menyiapkan kolom kode barang, nama barang, jumlah masuk, jumlah keluar, saldo, tanggal transaksi, dan nama petugas. Draf format akan saya siapkan pada 5 November 2026.\nBudi: Saya akan menyiapkan daftar barang awal untuk Gudang A paling lambat 6 November 2026. Jumlah barang belum saya pastikan sehingga jangan menuliskan angka perkiraan sebagai data final.\nRina: Baik. Setelah da"
+      },
+      {
+        "id": "S00002",
+        "text": "ftar barang dan format tersedia, kita akan menentukan tanggal mulai bersama. Saya akan mengoordinasikan pertemuan berikutnya, tetapi jadwalnya belum disepakati.\nSari: Apakah kita perlu membeli pemindai barcode untuk uji coba ini?\nRina: Belum ada keputusan membeli perangkat. Barcode masih usulan untuk dievaluasi. Anggaran belum ditetapkan dan belum disetujui.\nBudi: Sebagai usulan, kita bisa memeriksa sampel transaksi untuk melihat kelengkapan isian. Besar sampel dan target keberhasilannya masih perlu dibahas.\nRina: Kita catat itu sebagai usulan evaluasi, bukan target yang sudah disepakati. Untuk saat ini keputusan dan tugas yang pasti adalah uji coba di Gudang A, draf format oleh Sari, dan daftar barang awal oleh Budi. Pembelian barcode, tanggal mulai, anggaran, serta ukuran sampel masih perlu konfirmasi.\nSari: Saya setuju. Ringkasan dan presentasi sebaiknya membedakan keputusan, tugas yang disepakati, serta rekomendasi tambahan agar tidak tercampur.\nRina: Rapat selesai. Semua nama, gudang, masalah, dan tanggal dalam transkrip ini adalah data rekaan untuk demonstrasi portofolio.\n"
+      }
+    ]
+  }
+]

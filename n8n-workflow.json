@@ -1,0 +1,1312 @@
+{
+  "id": "diskusiLocalWorkflow",
+  "name": "Diskusi ke PowerPoint dan Action Plan",
+  "nodes": [
+    {
+      "id": "upload",
+      "name": "Terima MP3",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -650,
+        0
+      ],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "diskusi",
+        "responseMode": "responseNode",
+        "authentication": "headerAuth",
+        "options": {}
+      },
+      "webhookId": "upload"
+    },
+    {
+      "id": "register",
+      "name": "Daftarkan rekaman",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -420,
+        0
+      ],
+      "parameters": {
+        "url": "http://127.0.0.1:8765/api/jobs",
+        "method": "POST",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {
+          "timeout": 120000
+        },
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "file",
+              "inputDataFieldName": "={{ Object.keys($binary)[0] }}"
+            },
+            {
+              "name": "title",
+              "value": "={{ $json.body.title || 'Ringkasan diskusi' }}"
+            },
+            {
+              "name": "slide_count",
+              "value": "={{ $json.body.slide_count ?? '0' }}"
+            },
+            {
+              "name": "orchestrator",
+              "value": "n8n"
+            },
+            {
+              "name": "output_mode",
+              "value": "={{ $json.body.output_mode || 'summary_ppt' }}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "resume",
+      "name": "Lanjutkan pekerjaan tersimpan",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -650,
+        230
+      ],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "diskusi-lanjut",
+        "responseMode": "responseNode",
+        "authentication": "headerAuth",
+        "options": {}
+      },
+      "webhookId": "resume"
+    },
+    {
+      "id": "resume-get",
+      "name": "Ambil pekerjaan tersimpan",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -420,
+        230
+      ],
+      "parameters": {
+        "url": "={{ 'http://127.0.0.1:8765/api/jobs/' + encodeURIComponent($json.body.job_id || '') }}",
+        "method": "GET",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {
+          "timeout": 120000
+        }
+      }
+    },
+    {
+      "id": "accepted",
+      "name": "Kirim nomor pekerjaan",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        -160,
+        0
+      ],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ {job_id:$json.id,status:$json.status,hasil_url:'http://127.0.0.1:8765/'} }}",
+        "options": {
+          "responseCode": 202
+        }
+      }
+    },
+    {
+      "id": "error",
+      "name": "Hentikan dan tampilkan masalah",
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        1400,
+        850
+      ],
+      "parameters": {
+        "errorType": "errorMessage",
+        "errorMessage": "={{ ['failed','interrupted'].includes($json.status) ? $json.message : 'Batas tunggu n8n tercapai. Periksa status aplikasi; pemrosesan lokal tidak otomatis dibatalkan.' }}"
+      }
+    },
+    {
+      "id": "transcribe-start",
+      "name": "Transkripsi dan pembicara",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        200,
+        0
+      ],
+      "parameters": {
+        "url": "={{ 'http://127.0.0.1:8765/api/jobs/' + $json.id + '/stages/transcribe' }}",
+        "method": "POST",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {
+          "timeout": 120000
+        }
+      }
+    },
+    {
+      "id": "transcribe-status",
+      "name": "Cek hasil transkripsi lokal",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        200,
+        240
+      ],
+      "parameters": {
+        "url": "={{ 'http://127.0.0.1:8765/api/jobs/' + $json.id }}",
+        "method": "GET",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {
+          "timeout": 120000
+        }
+      }
+    },
+    {
+      "id": "transcribe-guard",
+      "name": "Gagal atau waktu habis 1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        420,
+        240
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "transcribe-guard-condition",
+              "leftValue": "={{ ['failed','interrupted'].includes($json.status) || $runIndex >= 360 }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "transcribe-done",
+      "name": "Transkripsi lokal selesai?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        640,
+        240
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "transcribe-done-condition",
+              "leftValue": "={{ ($json.completed_stages || []).includes('transcribe') }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "transcribe-wait",
+      "name": "Tunggu 1",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        640,
+        490
+      ],
+      "parameters": {
+        "resume": "timeInterval",
+        "amount": 10,
+        "unit": "seconds"
+      },
+      "webhookId": "transcribe-wait"
+    },
+    {
+      "id": "summarize-start",
+      "name": "Ringkasan dan pemeriksaan AI",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1050,
+        0
+      ],
+      "parameters": {
+        "url": "={{ 'http://127.0.0.1:8765/api/jobs/' + $json.id + '/stages/summarize' }}",
+        "method": "POST",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {
+          "timeout": 120000
+        }
+      }
+    },
+    {
+      "id": "summarize-status",
+      "name": "Cek hasil ringkasan dan pemeriksaan ai",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1050,
+        240
+      ],
+      "parameters": {
+        "url": "={{ 'http://127.0.0.1:8765/api/jobs/' + $json.id }}",
+        "method": "GET",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {
+          "timeout": 120000
+        }
+      }
+    },
+    {
+      "id": "summarize-guard",
+      "name": "Gagal atau waktu habis 2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1270,
+        240
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "summarize-guard-condition",
+              "leftValue": "={{ ['failed','interrupted'].includes($json.status) || $runIndex >= 360 }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "summarize-done",
+      "name": "Ringkasan dan pemeriksaan AI selesai?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1490,
+        240
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "summarize-done-condition",
+              "leftValue": "={{ ($json.completed_stages || []).includes('summarize') }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "summarize-wait",
+      "name": "Tunggu 2",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1490,
+        490
+      ],
+      "parameters": {
+        "resume": "timeInterval",
+        "amount": 10,
+        "unit": "seconds"
+      },
+      "webhookId": "summarize-wait"
+    },
+    {
+      "id": "render-start",
+      "name": "Buat PowerPoint",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3600,
+        0
+      ],
+      "parameters": {
+        "url": "={{ 'http://127.0.0.1:8765/api/jobs/' + $json.id + '/stages/render' }}",
+        "method": "POST",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {
+          "timeout": 120000
+        }
+      }
+    },
+    {
+      "id": "render-status",
+      "name": "Cek hasil buat powerpoint",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3600,
+        240
+      ],
+      "parameters": {
+        "url": "={{ 'http://127.0.0.1:8765/api/jobs/' + $json.id }}",
+        "method": "GET",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {
+          "timeout": 120000
+        }
+      }
+    },
+    {
+      "id": "render-guard",
+      "name": "Gagal atau waktu habis 3",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3820,
+        240
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "render-guard-condition",
+              "leftValue": "={{ ['failed','interrupted'].includes($json.status) || $runIndex >= 360 }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "render-done",
+      "name": "Buat PowerPoint selesai?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        4040,
+        240
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "render-done-condition",
+              "leftValue": "={{ ($json.completed_stages || []).includes('render') }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "render-wait",
+      "name": "Tunggu 3",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        4040,
+        490
+      ],
+      "parameters": {
+        "resume": "timeInterval",
+        "amount": 10,
+        "unit": "seconds"
+      },
+      "webhookId": "render-wait"
+    },
+    {
+      "id": "finish",
+      "name": "Hasil siap diunduh",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4600,
+        0
+      ],
+      "parameters": {
+        "jsCode": "return $input.all().map(item => { const j=item.json; const base='http://127.0.0.1:8765/api/jobs/'+j.id+'/files/'; return {json:{...j,hasil_url:'http://127.0.0.1:8765/',ringkasan_url:base+'summary.docx',...(j.output_mode!=='summary_only'?{pptx_url:base+'presentation.pptx',action_plan_url:base+'action-plan.xlsx'}:{})}}; });"
+      }
+    },
+    {
+      "id": "check-status",
+      "name": "Status dari luar",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -650,
+        650
+      ],
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "diskusi-status",
+        "responseMode": "responseNode",
+        "authentication": "none",
+        "options": {}
+      },
+      "webhookId": "check-status"
+    },
+    {
+      "id": "get-status",
+      "name": "Baca status pekerjaan",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -420,
+        650
+      ],
+      "parameters": {
+        "url": "={{ 'http://127.0.0.1:8765/api/jobs/' + encodeURIComponent($json.query.job_id || '') }}",
+        "method": "GET",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {
+          "timeout": 120000
+        }
+      }
+    },
+    {
+      "id": "reply-status",
+      "name": "Kembalikan status",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        -160,
+        650
+      ],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "note",
+      "name": "Petunjuk pemasangan",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -650,
+        -530
+      ],
+      "parameters": {
+        "content": "## Transkrip, Ringkasan, Rekomendasi, Action Plan\nUrutan: transcribe â†’ summarize â†’ quality â†’ plan â†’ render. Rekomendasi adalah usulan AI, bukan keputusan rapat. Excel memakai minggu relatif dan isian tanggal mulai/kapasitas. Plan menambah dua permintaan AI dasar; batas total tetap 12/job dan tidak ada retry jaringan. Mulai ulang backend dan n8n untuk mengaktifkan pembaruan.\nGPT-Transcribe untuk pekerjaan baru: audio dikirim ke OpenAI. Transkripsi memakai saldo dan berbagi batas 12 panggilan/job. Waktu transkrip adalah rentang bagian audio, bukan waktu presisi ucapan. Pekerjaan lama tidak diproses ulang otomatis.",
+        "height": 470,
+        "width": 530
+      }
+    },
+    {
+      "id": "quality-start",
+      "name": "Periksa dan perbaiki otomatis",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1900,
+        0
+      ],
+      "parameters": {
+        "url": "={{ 'http://127.0.0.1:8765/api/jobs/' + $json.id + '/stages/quality' }}",
+        "method": "POST",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {
+          "timeout": 120000
+        }
+      }
+    },
+    {
+      "id": "quality-status",
+      "name": "Cek hasil pemeriksaan sumber",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1900,
+        240
+      ],
+      "parameters": {
+        "url": "={{ 'http://127.0.0.1:8765/api/jobs/' + $json.id }}",
+        "method": "GET",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {
+          "timeout": 120000
+        }
+      }
+    },
+    {
+      "id": "quality-guard",
+      "name": "Gagal atau waktu habis kualitas",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2120,
+        240
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "quality-guard-condition",
+              "leftValue": "={{ ['failed','interrupted'].includes($json.status) || $runIndex >= 360 }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "quality-done",
+      "name": "Pemeriksaan kualitas selesai?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2340,
+        240
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "quality-done-condition",
+              "leftValue": "={{ ($json.completed_stages || []).includes('quality') }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "quality-wait",
+      "name": "Tunggu kualitas",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2340,
+        490
+      ],
+      "parameters": {
+        "resume": "timeInterval",
+        "amount": 10,
+        "unit": "seconds"
+      },
+      "webhookId": "quality-wait"
+    },
+    {
+      "id": "plan-start",
+      "name": "Rekomendasi dan Action Plan",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2750,
+        0
+      ],
+      "parameters": {
+        "url": "={{ 'http://127.0.0.1:8765/api/jobs/' + $json.id + '/stages/plan' }}",
+        "method": "POST",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {
+          "timeout": 120000
+        }
+      }
+    },
+    {
+      "id": "plan-status",
+      "name": "Cek hasil rekomendasi dan rencana",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2750,
+        240
+      ],
+      "parameters": {
+        "url": "={{ 'http://127.0.0.1:8765/api/jobs/' + $json.id }}",
+        "method": "GET",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {
+          "timeout": 120000
+        }
+      }
+    },
+    {
+      "id": "plan-guard",
+      "name": "Gagal atau waktu habis rencana",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2970,
+        240
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "plan-guard-condition",
+              "leftValue": "={{ ['failed','interrupted'].includes($json.status) || $runIndex >= 360 }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "plan-done",
+      "name": "Rencana selesai?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3190,
+        240
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "plan-done-condition",
+              "leftValue": "={{ ($json.completed_stages || []).includes('plan') }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "plan-wait",
+      "name": "Tunggu rencana",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        3190,
+        490
+      ],
+      "parameters": {
+        "resume": "timeInterval",
+        "amount": 10,
+        "unit": "seconds"
+      },
+      "webhookId": "plan-wait"
+    },
+    {
+      "id": "output-choice",
+      "name": "Perlu PowerPoint?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1820,
+        -40
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "output-choice-condition",
+              "leftValue": "={{ $json.output_mode !== 'summary_only' }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    }
+  ],
+  "connections": {
+    "Terima MP3": {
+      "main": [
+        [
+          {
+            "node": "Daftarkan rekaman",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Daftarkan rekaman": {
+      "main": [
+        [
+          {
+            "node": "Kirim nomor pekerjaan",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lanjutkan pekerjaan tersimpan": {
+      "main": [
+        [
+          {
+            "node": "Ambil pekerjaan tersimpan",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ambil pekerjaan tersimpan": {
+      "main": [
+        [
+          {
+            "node": "Kirim nomor pekerjaan",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Kirim nomor pekerjaan": {
+      "main": [
+        [
+          {
+            "node": "Transkripsi dan pembicara",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transkripsi dan pembicara": {
+      "main": [
+        [
+          {
+            "node": "Cek hasil transkripsi lokal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cek hasil transkripsi lokal": {
+      "main": [
+        [
+          {
+            "node": "Gagal atau waktu habis 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gagal atau waktu habis 1": {
+      "main": [
+        [
+          {
+            "node": "Hentikan dan tampilkan masalah",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Transkripsi lokal selesai?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transkripsi lokal selesai?": {
+      "main": [
+        [
+          {
+            "node": "Ringkasan dan pemeriksaan AI",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Tunggu 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tunggu 1": {
+      "main": [
+        [
+          {
+            "node": "Cek hasil transkripsi lokal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ringkasan dan pemeriksaan AI": {
+      "main": [
+        [
+          {
+            "node": "Cek hasil ringkasan dan pemeriksaan ai",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cek hasil ringkasan dan pemeriksaan ai": {
+      "main": [
+        [
+          {
+            "node": "Gagal atau waktu habis 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gagal atau waktu habis 2": {
+      "main": [
+        [
+          {
+            "node": "Hentikan dan tampilkan masalah",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Ringkasan dan pemeriksaan AI selesai?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ringkasan dan pemeriksaan AI selesai?": {
+      "main": [
+        [
+          {
+            "node": "Periksa dan perbaiki otomatis",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Tunggu 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tunggu 2": {
+      "main": [
+        [
+          {
+            "node": "Cek hasil ringkasan dan pemeriksaan ai",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Buat PowerPoint": {
+      "main": [
+        [
+          {
+            "node": "Cek hasil buat powerpoint",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cek hasil buat powerpoint": {
+      "main": [
+        [
+          {
+            "node": "Gagal atau waktu habis 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gagal atau waktu habis 3": {
+      "main": [
+        [
+          {
+            "node": "Hentikan dan tampilkan masalah",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Buat PowerPoint selesai?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Buat PowerPoint selesai?": {
+      "main": [
+        [
+          {
+            "node": "Hasil siap diunduh",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Tunggu 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tunggu 3": {
+      "main": [
+        [
+          {
+            "node": "Cek hasil buat powerpoint",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Status dari luar": {
+      "main": [
+        [
+          {
+            "node": "Baca status pekerjaan",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baca status pekerjaan": {
+      "main": [
+        [
+          {
+            "node": "Kembalikan status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Periksa dan perbaiki otomatis": {
+      "main": [
+        [
+          {
+            "node": "Cek hasil pemeriksaan sumber",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cek hasil pemeriksaan sumber": {
+      "main": [
+        [
+          {
+            "node": "Gagal atau waktu habis kualitas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gagal atau waktu habis kualitas": {
+      "main": [
+        [
+          {
+            "node": "Hentikan dan tampilkan masalah",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Pemeriksaan kualitas selesai?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pemeriksaan kualitas selesai?": {
+      "main": [
+        [
+          {
+            "node": "Perlu PowerPoint?",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Tunggu kualitas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tunggu kualitas": {
+      "main": [
+        [
+          {
+            "node": "Cek hasil pemeriksaan sumber",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Rekomendasi dan Action Plan": {
+      "main": [
+        [
+          {
+            "node": "Cek hasil rekomendasi dan rencana",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cek hasil rekomendasi dan rencana": {
+      "main": [
+        [
+          {
+            "node": "Gagal atau waktu habis rencana",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gagal atau waktu habis rencana": {
+      "main": [
+        [
+          {
+            "node": "Hentikan dan tampilkan masalah",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Rencana selesai?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Rencana selesai?": {
+      "main": [
+        [
+          {
+            "node": "Buat PowerPoint",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Tunggu rencana",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tunggu rencana": {
+      "main": [
+        [
+          {
+            "node": "Cek hasil rekomendasi dan rencana",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Perlu PowerPoint?": {
+      "main": [
+        [
+          {
+            "node": "Rekomendasi dan Action Plan",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Buat PowerPoint",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "all",
+    "saveDataErrorExecution": "all",
+    "saveExecutionProgress": true,
+    "executionTimeout": 7200
+  },
+  "active": false
+}

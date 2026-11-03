@@ -1,0 +1,261 @@
+{
+  "title": "Contoh Rencana Perbaikan Inventaris",
+  "assumptions": [
+    "Materi contoh rekaan untuk uji lokal, bukan hasil diskusi pengguna.",
+    "Jadwal mulai setelah ruang lingkup, peran dan kapasitas disetujui.",
+    "Tidak ada anggaran atau penghematan yang dianggap telah disetujui."
+  ],
+  "capacity_assumption": "Kapasitas belum diketahui. Isi person-day per minggu setelah tim mengonfirmasi ketersediaan.",
+  "approvals_required": [
+    "Persetujuan ruang lingkup dan pemilik proses",
+    "Persetujuan pilot serta kriteria penerimaan",
+    "Persetujuan perluasan setelah evaluasi pilot"
+  ],
+  "recommendations": [
+    {
+      "id": "R001",
+      "title": "Tetapkan data dasar inventaris",
+      "problem": "Format data antar cabang berbeda.",
+      "proposal": "Susun satu kamus data dan ukur kelengkapan pada sampel sebelum mengubah seluruh proses.",
+      "benefit": "Tim dapat membandingkan data dengan definisi yang sama.",
+      "priority": "P1",
+      "rationale": "Data dasar diperlukan sebelum pilot dan pengukuran perbaikan.",
+      "tradeoff": "Memerlukan waktu pemilik data untuk menyepakati definisi.",
+      "fact_ids": [
+        "F0001"
+      ],
+      "slide_summary": "Susun satu kamus data dan ukur kelengkapan pada sampel sebelum mengubah seluruh proses."
+    },
+    {
+      "id": "R002",
+      "title": "Uji prosedur pembaruan pada satu cabang",
+      "problem": "Peran dan prosedur pembaruan belum jelas.",
+      "proposal": "Uji prosedur sederhana dan pembagian peran pada satu cabang sebelum perluasan.",
+      "benefit": "Masalah pelaksanaan dapat ditemukan sebelum perubahan meluas.",
+      "priority": "P1",
+      "rationale": "Pilot membatasi gangguan operasional dan menguji pembagian peran.",
+      "tradeoff": "Hasil satu cabang belum tentu mewakili seluruh cabang.",
+      "fact_ids": [
+        "F0002",
+        "F0003"
+      ],
+      "slide_summary": "Uji prosedur sederhana dan pembagian peran pada satu cabang sebelum perluasan."
+    },
+    {
+      "id": "R003",
+      "title": "Perluas setelah hasil pilot disetujui",
+      "problem": "Perluasan tanpa hasil uji dapat mengulang masalah.",
+      "proposal": "Evaluasi pilot, perbaiki prosedur dan minta persetujuan sebelum perluasan bertahap.",
+      "benefit": "Perluasan memakai pelajaran dari uji yang terdokumentasi.",
+      "priority": "P2",
+      "rationale": "Perluasan bergantung hasil pilot dan kapasitas tim yang tersedia.",
+      "tradeoff": "Jadwal perluasan dapat berubah jika pilot belum memenuhi kriteria.",
+      "fact_ids": [
+        "F0003"
+      ],
+      "slide_summary": "Evaluasi pilot, perbaiki prosedur dan minta persetujuan sebelum perluasan bertahap."
+    }
+  ],
+  "tasks": [
+    {
+      "id": "A001",
+      "recommendation_id": "R001",
+      "phase": "Persiapan",
+      "priority": "P1",
+      "task": "Konfirmasi ruang lingkup pilot dan pemilik keputusan",
+      "deliverable": "Ruang lingkup dan daftar peran usulan",
+      "acceptance": "Pemilik proses menyetujui batas pilot",
+      "owner_role": "Pemilik proses dan perwakilan cabang",
+      "start_week": 1,
+      "duration_weeks": 1,
+      "effort_person_days": 2,
+      "depends_on": [],
+      "resources": "Sampel data, waktu pemilik proses dan alat pencatatan yang tersedia",
+      "risk": "Ketersediaan tim dan kualitas data belum dikonfirmasi",
+      "mitigation": "Konfirmasi kapasitas sebelum mulai dan batasi scope pilot bila diperlukan",
+      "kpi": "KPI usulan: kelengkapan data dan jumlah kendala terbuka; target ditetapkan setelah baseline",
+      "assumptions": "Estimasi durasi dan effort adalah usulan; jadwal disesuaikan setelah persetujuan",
+      "fact_ids": [
+        "F0001"
+      ],
+      "slide_summary": "Konfirmasi ruang lingkup pilot dan pemilik keputusan"
+    },
+    {
+      "id": "A002",
+      "recommendation_id": "R001",
+      "phase": "Persiapan",
+      "priority": "P1",
+      "task": "Petakan format data dan definisi yang digunakan cabang",
+      "deliverable": "Kamus data awal dan daftar kesenjangan",
+      "acceptance": "Definisi elemen wajib ditinjau pemilik data",
+      "owner_role": "Pemilik proses dan perwakilan cabang",
+      "start_week": 2,
+      "duration_weeks": 1,
+      "effort_person_days": 3,
+      "depends_on": [
+        "A001"
+      ],
+      "resources": "Sampel data, waktu pemilik proses dan alat pencatatan yang tersedia",
+      "risk": "Ketersediaan tim dan kualitas data belum dikonfirmasi",
+      "mitigation": "Konfirmasi kapasitas sebelum mulai dan batasi scope pilot bila diperlukan",
+      "kpi": "KPI usulan: kelengkapan data dan jumlah kendala terbuka; target ditetapkan setelah baseline",
+      "assumptions": "Estimasi durasi dan effort adalah usulan; jadwal disesuaikan setelah persetujuan",
+      "fact_ids": [
+        "F0001"
+      ],
+      "slide_summary": "Petakan format data dan definisi yang digunakan cabang"
+    },
+    {
+      "id": "A003",
+      "recommendation_id": "R001",
+      "phase": "Baseline",
+      "priority": "P1",
+      "task": "Ukur kelengkapan dan ketidaksesuaian pada sampel pilot",
+      "deliverable": "Catatan baseline sampel",
+      "acceptance": "Metode, ukuran sampel dan temuan dicatat",
+      "owner_role": "Pemilik proses dan perwakilan cabang",
+      "start_week": 3,
+      "duration_weeks": 1,
+      "effort_person_days": 3,
+      "depends_on": [
+        "A002"
+      ],
+      "resources": "Sampel data, waktu pemilik proses dan alat pencatatan yang tersedia",
+      "risk": "Ketersediaan tim dan kualitas data belum dikonfirmasi",
+      "mitigation": "Konfirmasi kapasitas sebelum mulai dan batasi scope pilot bila diperlukan",
+      "kpi": "KPI usulan: kelengkapan data dan jumlah kendala terbuka; target ditetapkan setelah baseline",
+      "assumptions": "Estimasi durasi dan effort adalah usulan; jadwal disesuaikan setelah persetujuan",
+      "fact_ids": [
+        "F0001"
+      ],
+      "slide_summary": "Ukur kelengkapan dan ketidaksesuaian pada sampel pilot"
+    },
+    {
+      "id": "A004",
+      "recommendation_id": "R002",
+      "phase": "Pilot",
+      "priority": "P1",
+      "task": "Susun prosedur pembaruan dan pembagian peran pilot",
+      "deliverable": "Prosedur pilot dan pembagian peran",
+      "acceptance": "Pemilik proses menyetujui prosedur dan jalur eskalasi",
+      "owner_role": "Pemilik proses dan perwakilan cabang",
+      "start_week": 4,
+      "duration_weeks": 1,
+      "effort_person_days": 3,
+      "depends_on": [
+        "A003"
+      ],
+      "resources": "Sampel data, waktu pemilik proses dan alat pencatatan yang tersedia",
+      "risk": "Ketersediaan tim dan kualitas data belum dikonfirmasi",
+      "mitigation": "Konfirmasi kapasitas sebelum mulai dan batasi scope pilot bila diperlukan",
+      "kpi": "KPI usulan: kelengkapan data dan jumlah kendala terbuka; target ditetapkan setelah baseline",
+      "assumptions": "Estimasi durasi dan effort adalah usulan; jadwal disesuaikan setelah persetujuan",
+      "fact_ids": [
+        "F0002",
+        "F0003"
+      ],
+      "slide_summary": "Susun prosedur pembaruan dan pembagian peran pilot"
+    },
+    {
+      "id": "A005",
+      "recommendation_id": "R002",
+      "phase": "Pilot",
+      "priority": "P1",
+      "task": "Jalankan pilot dan catat kendala setiap minggu",
+      "deliverable": "Log pelaksanaan dan kendala",
+      "acceptance": "Setiap kendala memiliki penanggung jawab tindak lanjut",
+      "owner_role": "Pemilik proses dan perwakilan cabang",
+      "start_week": 5,
+      "duration_weeks": 2,
+      "effort_person_days": 6,
+      "depends_on": [
+        "A004"
+      ],
+      "resources": "Sampel data, waktu pemilik proses dan alat pencatatan yang tersedia",
+      "risk": "Ketersediaan tim dan kualitas data belum dikonfirmasi",
+      "mitigation": "Konfirmasi kapasitas sebelum mulai dan batasi scope pilot bila diperlukan",
+      "kpi": "KPI usulan: kelengkapan data dan jumlah kendala terbuka; target ditetapkan setelah baseline",
+      "assumptions": "Estimasi durasi dan effort adalah usulan; jadwal disesuaikan setelah persetujuan",
+      "fact_ids": [
+        "F0002",
+        "F0003"
+      ],
+      "slide_summary": "Jalankan pilot dan catat kendala setiap minggu"
+    },
+    {
+      "id": "A006",
+      "recommendation_id": "R003",
+      "phase": "Evaluasi",
+      "priority": "P2",
+      "task": "Bandingkan hasil pilot dengan baseline dan tinjau risiko",
+      "deliverable": "Laporan evaluasi serta rekomendasi keputusan",
+      "acceptance": "Metode pengukuran sama dan pengecualian dijelaskan",
+      "owner_role": "Pemilik proses dan perwakilan cabang",
+      "start_week": 7,
+      "duration_weeks": 1,
+      "effort_person_days": 3,
+      "depends_on": [
+        "A005"
+      ],
+      "resources": "Sampel data, waktu pemilik proses dan alat pencatatan yang tersedia",
+      "risk": "Ketersediaan tim dan kualitas data belum dikonfirmasi",
+      "mitigation": "Konfirmasi kapasitas sebelum mulai dan batasi scope pilot bila diperlukan",
+      "kpi": "KPI usulan: kelengkapan data dan jumlah kendala terbuka; target ditetapkan setelah baseline",
+      "assumptions": "Estimasi durasi dan effort adalah usulan; jadwal disesuaikan setelah persetujuan",
+      "fact_ids": [
+        "F0003"
+      ],
+      "slide_summary": "Bandingkan hasil pilot dengan baseline dan tinjau risiko"
+    },
+    {
+      "id": "A007",
+      "recommendation_id": "R003",
+      "phase": "Perluasan",
+      "priority": "P2",
+      "task": "Minta persetujuan perluasan dan konfirmasi kapasitas",
+      "deliverable": "Keputusan lanjut atau perbaikan pilot",
+      "acceptance": "Ada persetujuan tertulis sebelum perluasan",
+      "owner_role": "Pemilik proses dan perwakilan cabang",
+      "start_week": 8,
+      "duration_weeks": 1,
+      "effort_person_days": 2,
+      "depends_on": [
+        "A006"
+      ],
+      "resources": "Sampel data, waktu pemilik proses dan alat pencatatan yang tersedia",
+      "risk": "Ketersediaan tim dan kualitas data belum dikonfirmasi",
+      "mitigation": "Konfirmasi kapasitas sebelum mulai dan batasi scope pilot bila diperlukan",
+      "kpi": "KPI usulan: kelengkapan data dan jumlah kendala terbuka; target ditetapkan setelah baseline",
+      "assumptions": "Estimasi durasi dan effort adalah usulan; jadwal disesuaikan setelah persetujuan",
+      "fact_ids": [
+        "F0003"
+      ],
+      "slide_summary": "Minta persetujuan perluasan dan konfirmasi kapasitas"
+    },
+    {
+      "id": "A008",
+      "recommendation_id": "R003",
+      "phase": "Perluasan",
+      "priority": "P2",
+      "task": "Perluas bertahap dan lakukan serah terima pengelolaan",
+      "deliverable": "Prosedur final dan catatan serah terima",
+      "acceptance": "Pemilik proses menerima tanggung jawab pemeliharaan",
+      "owner_role": "Pemilik proses dan perwakilan cabang",
+      "start_week": 9,
+      "duration_weeks": 2,
+      "effort_person_days": 5,
+      "depends_on": [
+        "A007"
+      ],
+      "resources": "Sampel data, waktu pemilik proses dan alat pencatatan yang tersedia",
+      "risk": "Ketersediaan tim dan kualitas data belum dikonfirmasi",
+      "mitigation": "Konfirmasi kapasitas sebelum mulai dan batasi scope pilot bila diperlukan",
+      "kpi": "KPI usulan: kelengkapan data dan jumlah kendala terbuka; target ditetapkan setelah baseline",
+      "assumptions": "Estimasi durasi dan effort adalah usulan; jadwal disesuaikan setelah persetujuan",
+      "fact_ids": [
+        "F0003"
+      ],
+      "slide_summary": "Perluas bertahap dan lakukan serah terima pengelolaan"
+    }
+  ]
+}

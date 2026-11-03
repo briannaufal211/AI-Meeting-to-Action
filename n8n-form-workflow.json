@@ -1,0 +1,693 @@
+{
+  "id": "diskusiUploadForm",
+  "name": "Form Unggah Diskusi - MP3 ke PowerPoint",
+  "nodes": [
+    {
+      "id": "form-upload",
+      "name": "Form unggah diskusi",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.4,
+      "position": [
+        -800,
+        0
+      ],
+      "parameters": {
+        "formTitle": "Diskusi menjadi Ringkasan Word atau PowerPoint",
+        "formDescription": "Jika memakai transkrip tersimpan, audio tidak ditranskripsi ulang. Pilih keluaran, lalu Kirim hanya saat Anda ingin memulai tahapan AI berbayar berikutnya. Unggah satu rekaman, isi judul, lalu kirim. Untuk proses lengkap, audio/TXT wajib dipilih. Rekaman diproses otomatis menjadi transkrip berlabel suara: GPT-Transcribe untuk kata dan proses tambahan untuk pembicara. Audio dikirim ke OpenAI; estimasi gabungan US$0,0105/menit di luar ringkasan/pemeriksaan. Label bukan identitas nyata; atribusi yang meragukan ditandai. Bagian audio tersimpan untuk dilanjutkan; tidak ada pengulangan koneksi otomatis. Pilih Uji koneksi untuk memeriksa layanan tanpa AI; pada mode itu file boleh kosong. Batas awal: 300 MB dan 120 menit audio. Termasuk pemeriksaan transkrip lengkap dan maksimal satu putaran perbaikan AI (dapat menambah 2 panggilan API). Hasil yang belum pasti diberi label draf. Termasuk rekomendasi usulan dan Action Plan Excel dengan jadwal relatif. Penyusunan dan audit rencana menambah 2 panggilan AI dasar; revisi terbatas mengikuti sisa batas total.",
+        "formFields": {
+          "values": [
+            {
+              "fieldName": "source",
+              "fieldLabel": "Sumber pekerjaan",
+              "fieldType": "dropdown",
+              "defaultValue": "Gunakan transkrip terbaru tersimpan",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Gunakan transkrip terbaru tersimpan"
+                  },
+                  {
+                    "option": "Unggah rekaman baru"
+                  }
+                ]
+              },
+              "requiredField": true
+            },
+            {
+              "fieldName": "job_id",
+              "fieldLabel": "ID pekerjaan tersimpan (abaikan jika unggah baru)",
+              "fieldType": "text",
+              "defaultValue": "fb8d5308-f522-4528-b758-c2850d0d1806",
+              "requiredField": false
+            },
+            {
+              "fieldName": "output_mode",
+              "fieldLabel": "Keluaran yang dibutuhkan",
+              "fieldType": "dropdown",
+              "defaultValue": "Ringkasan Word saja",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Ringkasan Word saja"
+                  },
+                  {
+                    "option": "Ringkasan Word + PPT"
+                  }
+                ]
+              },
+              "requiredField": true
+            },
+            {
+              "fieldName": "file",
+              "fieldLabel": "Rekaman audio atau transkrip",
+              "fieldType": "file",
+              "multipleFiles": false,
+              "acceptFileTypes": ".mp3,.wav,.m4a,.mp4,.webm,.ogg,.flac,.txt",
+              "requiredField": false
+            },
+            {
+              "fieldName": "title",
+              "fieldLabel": "Judul presentasi",
+              "fieldType": "text",
+              "defaultValue": "Ringkasan diskusi",
+              "requiredField": false
+            },
+            {
+              "fieldName": "slides",
+              "fieldLabel": "Jumlah slide",
+              "fieldType": "dropdown",
+              "defaultValue": "Otomatis sesuai isi transkrip",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Otomatis sesuai isi transkrip"
+                  },
+                  {
+                    "option": "4"
+                  },
+                  {
+                    "option": "6"
+                  },
+                  {
+                    "option": "8"
+                  },
+                  {
+                    "option": "10"
+                  },
+                  {
+                    "option": "12"
+                  },
+                  {
+                    "option": "16"
+                  }
+                ]
+              },
+              "requiredField": true
+            },
+            {
+              "fieldName": "mode",
+              "fieldLabel": "Jenis proses",
+              "fieldType": "dropdown",
+              "defaultValue": "Proses sesuai pilihan keluaran (AI berbayar)",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Proses sesuai pilihan keluaran (AI berbayar)"
+                  },
+                  {
+                    "option": "Uji koneksi saja (tanpa AI)"
+                  }
+                ]
+              },
+              "requiredField": true
+            }
+          ]
+        },
+        "responseMode": "lastNode",
+        "options": {
+          "path": "diskusi-unggah",
+          "buttonLabel": "Kirim",
+          "appendAttribution": true
+        }
+      },
+      "webhookId": "diskusi-unggah"
+    },
+    {
+      "id": "prepare",
+      "name": "Siapkan kiriman",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -560,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const item=$input.first(); const f=item.json; const binary=item.binary||{};\nconst testOnly=String(f.mode||'').startsWith('Uji koneksi');\nconst selection=String(f.slides||'Otomatis sesuai isi transkrip');\nconst count=selection.startsWith('Otomatis')?0:Number(selection);\nconst reuse=String(f.source||'').startsWith('Gunakan transkrip');\nconst jobId=reuse?String(f.job_id||'').trim():'';\nconst outputMode=String(f.output_mode||'Ringkasan Word + PPT').includes('saja')?'summary_only':'summary_ppt';\nconst key=Object.keys(binary)[0];let inputError='';\nif(!testOnly&&!reuse&&!key)inputError='Pilih satu file rekaman atau transkrip terlebih dahulu.';\nif(!testOnly&&reuse&&!/^[a-f0-9]{8}-(?:[a-f0-9]{4}-){3}[a-f0-9]{12}$/.test(jobId))inputError='ID pekerjaan tersimpan tidak valid.';\nif(![0,4,6,8,10,12,16].includes(count))inputError='Jumlah slide tidak sesuai pilihan yang tersedia.';\nif(!testOnly&&!reuse&&key&&!/\\.(mp3|wav|m4a|mp4|webm|ogg|flac|txt)$/i.test(binary[key].fileName||''))inputError='Gunakan audio yang didukung atau TXT UTF-8.';\nreturn [{json:{title:String(f.title||'Ringkasan diskusi').slice(0,180),slide_count:String(count),output_mode:outputMode,reuse_job_id:jobId,testOnly,inputError},binary,pairedItem:{item:0}}];"
+      }
+    },
+    {
+      "id": "health",
+      "name": "Periksa layanan lokal",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -330,
+        0
+      ],
+      "parameters": {
+        "url": "http://127.0.0.1:8765/api/health",
+        "options": {
+          "timeout": 5000
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "id": "ready",
+      "name": "Periksa kesiapan",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -100,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const prepared=$('Siapkan kiriman').first(); const health=$input.first().json;\nconst connected=health.ok===true;let reason=prepared.json.inputError;\nif(!connected)reason='Aplikasi pemrosesan lokal belum terhubung. Jalankan Mulai.cmd pada folder proyek Documents/Codex, lalu coba lagi.';\nelse if(!health.api_key_configured)reason='API key belum terbaca di aplikasi lokal. Simpan konfigurasi lalu muat ulang konfigurasi.';\nelse if((health.quality_pipeline_version||0)<2)reason='Pemeriksaan otomatis versi baru belum aktif. Mulai ulang aplikasi lokal dari folder Documents/Codex, lalu buka form ini lagi.';\nelse if(health.summary_docx_supported!==true)reason='Format ringkasan Word belum aktif. Mulai ulang aplikasi lokal, lalu buka form lagi.';\nelse if(health.planning_supported!==true)reason='Rekomendasi dan Action Plan belum aktif. Mulai ulang aplikasi lokal.';\nelse if((health.transcription_api_version||0)<1||health.transcription_provider!=='openai')reason='GPT-Transcribe belum aktif. Mulai ulang layanan aplikasi dan pastikan TRANSCRIPTION_PROVIDER=openai.';\nelse if(health.speaker_audio_supported!==true)reason='Versi transkripsi dengan pembicara belum aktif. Mulai ulang layanan aplikasi.';\nelse if(health.output_modes_supported!==true)reason='Pilihan keluaran belum aktif; mulai ulang aplikasi lokal.';\nelse if(prepared.json.output_mode!=='summary_only'&&prepared.json.slide_count==='0'&&health.auto_slide_count_supported!==true)reason='Mode Otomatis memerlukan aplikasi lokal versi terbaru. Mulai ulang layanan aplikasi, lalu buka form ini lagi. Jumlah manual masih dapat dipilih.';\nconst notes=['Aplikasi lokal: '+(connected?'terhubung':'belum terhubung'), 'API key: '+(health.api_key_configured?'terisi':'belum terisi'), 'Pemeriksaan otomatis: '+((health.quality_pipeline_version||0)>=2?'aktif':'perlu memulai ulang aplikasi lokal'), 'Ringkasan Word: '+(health.summary_docx_supported===true?'aktif':'perlu memulai ulang aplikasi lokal'), 'Rekomendasi dan Action Plan: '+(health.planning_supported===true?'aktif':'perlu memulai ulang aplikasi'), 'Transkripsi: '+String(health.transcription_model||'versi lama')+'; audio dikirim ke OpenAI dan berbayar', 'Model ringkasan: '+String(health.model||'belum tersedia'), 'Jumlah otomatis: '+(health.auto_slide_count_supported===true?'aktif':'perlu memulai ulang aplikasi lokal'), 'Uji ini tidak mengirim permintaan AI berbayar. Akses model dan kualitas hasil belum diuji lewat API.'];\nreturn [{json:{...prepared.json,ready:!reason,info:prepared.json.testOnly?notes.join('\\n'):reason},binary:prepared.binary,pairedItem:{item:0}}];"
+      }
+    },
+    {
+      "id": "can-run",
+      "name": "Siap untuk proses lengkap?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        130,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ready-condition",
+              "leftValue": "={{ $json.ready && !$json.testOnly }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "delegate",
+      "name": "Jalankan tiga tahap n8n",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        380,
+        -130
+      ],
+      "parameters": {
+        "url": "http://127.0.0.1:8765/api/n8n-jobs",
+        "method": "POST",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "file",
+              "inputDataFieldName": "={{ Object.keys($binary)[0] }}"
+            },
+            {
+              "name": "title",
+              "value": "={{ $json.title }}"
+            },
+            {
+              "name": "slide_count",
+              "value": "={{ $json.slide_count }}"
+            },
+            {
+              "name": "output_mode",
+              "value": "={{ $json.output_mode }}"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 120000
+        }
+      }
+    },
+    {
+      "id": "result-form",
+      "name": "Buka halaman progres",
+      "type": "n8n-nodes-base.form",
+      "typeVersion": 2.4,
+      "position": [
+        650,
+        -130
+      ],
+      "parameters": {
+        "operation": "completion",
+        "respondWith": "redirect",
+        "redirectUrl": "={{ 'http://localhost:5678/webhook/diskusi-hasil?job_id=' + encodeURIComponent($json.id || $json.job_id || '') }}",
+        "options": {
+          "appendAttribution": true
+        }
+      }
+    },
+    {
+      "id": "check-result",
+      "name": "Informasi kesiapan",
+      "type": "n8n-nodes-base.form",
+      "typeVersion": 2.4,
+      "position": [
+        380,
+        150
+      ],
+      "parameters": {
+        "operation": "completion",
+        "respondWith": "text",
+        "completionTitle": "={{ $json.testOnly ? 'Hasil uji koneksi' : 'Belum siap diproses' }}",
+        "completionMessage": "={{ $json.info }}",
+        "options": {
+          "appendAttribution": true
+        }
+      }
+    },
+    {
+      "id": "status-get",
+      "name": "Halaman hasil diskusi",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -800,
+        480
+      ],
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "diskusi-hasil",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "webhookId": "diskusi-hasil"
+    },
+    {
+      "id": "status-backend",
+      "name": "Baca hasil lokal",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -560,
+        480
+      ],
+      "parameters": {
+        "url": "={{ 'http://127.0.0.1:8765/api/jobs/' + encodeURIComponent($json.query.job_id || '') }}",
+        "options": {
+          "timeout": 10000,
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "page-build",
+      "name": "Susun halaman hasil",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -330,
+        480
+      ],
+      "parameters": {
+        "jsCode": "function statusPage(job) {\n const esc=v=>String(v??'').replace(/[&<>\"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',\"'\":'&#39;'}[c]));\n const valid=/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i.test(job.id||'');\n const terminal=['completed','needs_review','failed','interrupted'].includes(job.status);\n const pending=valid&&!terminal;\n const labels={completed:job.recovery_method==='editorial_saved_transcript'?'Hasil dipulihkan — siap diunduh':'Hasil siap diunduh',needs_review:'Draf: masih ada bagian belum pasti',failed:'Proses perlu diperbaiki',interrupted:'Proses terhenti',running:'Sedang diproses',queued:'Dalam antrean',waiting:'Menunggu tahap berikutnya'};\n const links=[['transcript-client.html','Transkrip mudah dibaca'],['transcript-client.txt','Transkrip mudah dibaca TXT'],['transcript.txt','Transkrip asli'],['transcript-checked.txt','Transkrip bertanda'],['quality.md','Catatan kualitas'],['summary.docx','Ringkasan Word'],['presentation.pptx','PowerPoint'],['action-plan.xlsx','Action Plan Excel'],['plan-notes.md','Catatan rencana'],['review.json','Catatan pemeriksaan']].filter(([file])=>(job.files||[]).includes(file)).map(([file,label])=>`<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"http://127.0.0.1:8765/api/jobs/${encodeURIComponent(job.id)}/files/${file}\">${label}</a>`).join('');\n const title=valid?(labels[job.status]||'Sedang diproses'):'Pekerjaan tidak ditemukan';\n const body=`<!doctype html><html lang=\"id\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Hasil diskusi</title><style>body{font:17px Arial,sans-serif;background:#101b24;color:#f4f0e8;max-width:800px;margin:60px auto;padding:0 24px;line-height:1.6}h1{font-size:34px}a{display:inline-block;color:#fff;background:#89532e;padding:10px 18px;margin:10px 10px 10px 0;border-radius:5px;text-decoration:none}progress{width:100%;height:15px;accent-color:#b77545}.muted{color:#b0b8bb}section{margin-top:24px}</style></head><body><p class=\"muted\">OTOMASI DISKUSI MELALUI N8N</p><h1>${esc(title)}</h1><p>${esc(valid?job.title:'Periksa kembali tautan hasil pekerjaan.')}</p><p>${esc(valid?job.message:'')}</p>${pending?`<progress max=\"100\" value=\"${Math.max(0,Math.min(100,Number(job.progress)||0))}\"></progress><p class=\"muted\">Halaman diperbarui setiap 10 detik. Biarkan komputer dan layanan lokal tetap berjalan.</p>`:''}${job.status==='needs_review'?'<p>Buka Catatan kualitas untuk melihat temuan spesifik. Hasil ini belum lolos seluruh pemeriksaan otomatis.</p>':''}<section>${links}</section><p class=\"muted\">Pemeriksaan AI menilai kesesuaian dengan transkrip. Ucapan yang tidak jelas tetap dapat memerlukan konfirmasi audio.</p>${valid&&job.usage?`<p class=\"muted\">Estimasi API yang tercatat: US$${esc(job.usage.estimated_usd)}. Tagihan aktual mengikuti dashboard OpenAI.</p>`:''}<p class=\"muted\">Nomor pekerjaan: ${esc(valid?job.id:'â€”')}</p><a target=\"_top\" href=\"http://localhost:5678/form/diskusi-unggah\">Unggah rekaman lain</a><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"http://localhost:5678/workflow/diskusiLocalWorkflow\">Lihat workflow utama</a></body></html>`;\n return {html:body,pending};\n}\nreturn $input.all().map(item=>({json:statusPage(item.json)}));"
+      }
+    },
+    {
+      "id": "pending",
+      "name": "Masih diproses?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -100,
+        480
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "pending-condition",
+              "leftValue": "={{ $json.pending }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "progress",
+      "name": "Tampilkan progres",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        150,
+        380
+      ],
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.html }}",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/html; charset=utf-8"
+              },
+              {
+                "name": "Cache-Control",
+                "value": "no-store"
+              },
+              {
+                "name": "Refresh",
+                "value": "10"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "done",
+      "name": "Tampilkan hasil akhir",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        150,
+        620
+      ],
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.html }}",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/html; charset=utf-8"
+              },
+              {
+                "name": "Cache-Control",
+                "value": "no-store"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "reuse-source",
+      "name": "Gunakan transkrip tersimpan?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        900,
+        280
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "reuse-source-condition",
+              "leftValue": "={{ Boolean($json.reuse_job_id) }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "configure-output",
+      "name": "Atur keluaran pekerjaan tersimpan",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1120,
+        100
+      ],
+      "parameters": {
+        "url": "={{ 'http://127.0.0.1:8765/api/jobs/' + encodeURIComponent($json.reuse_job_id) + '/output-mode' }}",
+        "method": "POST",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "output_mode",
+              "value": "={{ $json.output_mode }}"
+            },
+            {
+              "name": "slide_count",
+              "value": "={{ $json.slide_count }}"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 120000
+        }
+      }
+    },
+    {
+      "id": "resume-stored",
+      "name": "Lanjutkan transkrip tersimpan",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1340,
+        100
+      ],
+      "parameters": {
+        "url": "={{ 'http://127.0.0.1:8765/api/n8n-resume/' + $json.id }}",
+        "method": "POST",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {
+          "timeout": 120000
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Form unggah diskusi": {
+      "main": [
+        [
+          {
+            "node": "Siapkan kiriman",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Siapkan kiriman": {
+      "main": [
+        [
+          {
+            "node": "Periksa layanan lokal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Periksa layanan lokal": {
+      "main": [
+        [
+          {
+            "node": "Periksa kesiapan",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Periksa kesiapan": {
+      "main": [
+        [
+          {
+            "node": "Siap untuk proses lengkap?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Siap untuk proses lengkap?": {
+      "main": [
+        [
+          {
+            "node": "Gunakan transkrip tersimpan?",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Informasi kesiapan",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Jalankan tiga tahap n8n": {
+      "main": [
+        [
+          {
+            "node": "Buka halaman progres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Halaman hasil diskusi": {
+      "main": [
+        [
+          {
+            "node": "Baca hasil lokal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baca hasil lokal": {
+      "main": [
+        [
+          {
+            "node": "Susun halaman hasil",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Susun halaman hasil": {
+      "main": [
+        [
+          {
+            "node": "Masih diproses?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Masih diproses?": {
+      "main": [
+        [
+          {
+            "node": "Tampilkan progres",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Tampilkan hasil akhir",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gunakan transkrip tersimpan?": {
+      "main": [
+        [
+          {
+            "node": "Atur keluaran pekerjaan tersimpan",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Jalankan tiga tahap n8n",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Atur keluaran pekerjaan tersimpan": {
+      "main": [
+        [
+          {
+            "node": "Lanjutkan transkrip tersimpan",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lanjutkan transkrip tersimpan": {
+      "main": [
+        [
+          {
+            "node": "Buka halaman progres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "executionTimeout": 300,
+    "saveDataSuccessExecution": "all",
+    "saveDataErrorExecution": "all"
+  },
+  "active": false
+}

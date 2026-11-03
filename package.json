@@ -1,0 +1,9 @@
+{
+  "name": "otomasi-diskusi-lokal",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "pptxgenjs": "4.0.1",
+    "jszip": "3.10.2"
+  }
+}

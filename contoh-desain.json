@@ -1,0 +1,27 @@
+{
+  "summary": [
+    {"title":"Mulai dari 3 rekaman", "detail":"Gunakan rekaman pendek untuk menguji alur sebelum memproses diskusi panjang."},
+    {"title":"Periksa isi ringkasan", "detail":"Cocokkan nama, angka, dan keputusan dengan transkrip sumber."},
+    {"title":"Nilai slide secara visual", "detail":"Pastikan teks terbaca, tabel jelas, dan tidak ada bagian yang terpotong."}
+  ],
+  "decisions": [
+    ["Ruang lingkup","Uji coba pada 3 rekaman pendek","Disepakati"],
+    ["Keluaran","Transkrip, ringkasan, dan file PowerPoint","Disepakati"],
+    ["Peluncuran","Menunggu evaluasi hasil uji coba","Belum ditentukan"]
+  ],
+  "process": [
+    {"title":"Transkripsi","detail":"MP3 diubah menjadi teks sumber yang bisa diperiksa."},
+    {"title":"Ringkasan","detail":"Pokok bahasan, keputusan, dan tugas disusun dari teks."},
+    {"title":"PowerPoint","detail":"Materi ditata ke layout yang sesuai dan bisa diedit."}
+  ],
+  "actions": [
+    ["Siapkan 3 rekaman pendek","Rina","Sebelum uji coba"],
+    ["Cek nama dan angka pada transkrip","Budi","Setelah transkripsi"],
+    ["Nilai ringkasan dan tampilan slide","Tim proyek","Setelah hasil siap"]
+  ],
+  "checks": [
+    ["Nama dan angka","Sesuai dengan sumber"],
+    ["Keputusan dan usulan","Tidak tertukar atau ditambah"],
+    ["Layout dan format","Terbaca tanpa teks terpotong"]
+  ]
+}

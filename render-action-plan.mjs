@@ -1,0 +1,11 @@
+import {spawnSync} from 'node:child_process';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import fs from 'node:fs';
+const root=path.dirname(fileURLToPath(import.meta.url));
+const [directory,target]=process.argv.slice(2);
+if(!directory||!target)throw Error('Usage: node render-action-plan.mjs job-directory output.xlsx');
+const local=path.join(root,'.venv',process.platform==='win32'?'Scripts/python.exe':'bin/python');
+const python=process.env.WORKFLOW_PYTHON||(fs.existsSync(local)?local:(process.platform==='win32'?'python':'python3'));
+const result=spawnSync(python,[path.join(root,'excel_export.py'),directory,target],{stdio:'inherit',windowsHide:true});
+if(result.error)throw result.error;process.exitCode=result.status??1;

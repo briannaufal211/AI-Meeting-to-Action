@@ -1,0 +1,17 @@
+TRANSKRIP DEMO REKAAN — bukan rekaman atau data klien.
+Judul: Rapat Uji Coba Pencatatan Inventaris
+Tanggal rapat: 2 November 2026
+Peserta rekaan: Rina (koordinator), Budi (operasional), Sari (administrasi).
+
+Rina: Hari ini kita membahas uji coba pencatatan inventaris. Masalah dalam skenario rekaan ini adalah pencatatan barang masuk dan keluar masih dilakukan pada lembar yang terpisah. Kita belum memiliki angka selisih stok yang terverifikasi.
+Budi: Saya mengusulkan agar uji coba dibatasi pada Gudang A. Kita mulai dari daftar barang yang sudah ada dan mencatat setiap transaksi pada satu format bersama.
+Rina: Saya setuju. Keputusan rapat adalah melakukan uji coba pencatatan pada Gudang A, bukan langsung menerapkan ke semua gudang. Tanggal mulai uji coba belum ditentukan.
+Sari: Untuk format pencatatan, saya akan menyiapkan kolom kode barang, nama barang, jumlah masuk, jumlah keluar, saldo, tanggal transaksi, dan nama petugas. Draf format akan saya siapkan pada 5 November 2026.
+Budi: Saya akan menyiapkan daftar barang awal untuk Gudang A paling lambat 6 November 2026. Jumlah barang belum saya pastikan sehingga jangan menuliskan angka perkiraan sebagai data final.
+Rina: Baik. Setelah daftar barang dan format tersedia, kita akan menentukan tanggal mulai bersama. Saya akan mengoordinasikan pertemuan berikutnya, tetapi jadwalnya belum disepakati.
+Sari: Apakah kita perlu membeli pemindai barcode untuk uji coba ini?
+Rina: Belum ada keputusan membeli perangkat. Barcode masih usulan untuk dievaluasi. Anggaran belum ditetapkan dan belum disetujui.
+Budi: Sebagai usulan, kita bisa memeriksa sampel transaksi untuk melihat kelengkapan isian. Besar sampel dan target keberhasilannya masih perlu dibahas.
+Rina: Kita catat itu sebagai usulan evaluasi, bukan target yang sudah disepakati. Untuk saat ini keputusan dan tugas yang pasti adalah uji coba di Gudang A, draf format oleh Sari, dan daftar barang awal oleh Budi. Pembelian barcode, tanggal mulai, anggaran, serta ukuran sampel masih perlu konfirmasi.
+Sari: Saya setuju. Ringkasan dan presentasi sebaiknya membedakan keputusan, tugas yang disepakati, serta rekomendasi tambahan agar tidak tercampur.
+Rina: Rapat selesai. Semua nama, gudang, masalah, dan tanggal dalam transkrip ini adalah data rekaan untuk demonstrasi portofolio.

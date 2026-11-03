@@ -1,0 +1,409 @@
+{
+  "title": "DEMO REKAAN — Uji Coba Inventaris",
+  "summary": [
+    {
+      "text": "Dalam skenario demonstrasi rekaan, catatan barang masuk dan keluar masih terpisah dan belum ada angka selisih stok yang terverifikasi.",
+      "fact_ids": [
+        "F0001",
+        "F0002"
+      ]
+    },
+    {
+      "text": "Rapat memutuskan uji coba pencatatan di Gudang A, bukan penerapan langsung di semua gudang; tanggal mulainya belum ditentukan.",
+      "fact_ids": [
+        "F0004",
+        "F0005"
+      ]
+    },
+    {
+      "text": "Sari menyiapkan draf format pencatatan, sedangkan Budi menyiapkan daftar barang awal Gudang A; jumlah barang belum dipastikan.",
+      "fact_ids": [
+        "F0006",
+        "F0007"
+      ]
+    },
+    {
+      "text": "Pembelian pemindai barcode dan anggarannya belum diputuskan. Pemeriksaan sampel transaksi masih usulan, dengan ukuran sampel dan target yang belum dibahas tuntas.",
+      "fact_ids": [
+        "F0009",
+        "F0010",
+        "F0011"
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "text": "Uji coba pencatatan dilakukan di Gudang A, bukan langsung diterapkan ke semua gudang.",
+      "fact_ids": [
+        "F0004"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "task": "Menyiapkan draf format pencatatan dengan kolom kode barang, nama barang, jumlah masuk, jumlah keluar, saldo, tanggal transaksi, dan nama petugas.",
+      "owner": "Sari",
+      "due": "5 November 2026",
+      "fact_ids": [
+        "F0006"
+      ]
+    },
+    {
+      "task": "Menyiapkan daftar barang awal untuk Gudang A; jumlah barang belum dipastikan dan angka perkiraan tidak boleh dicatat sebagai data final.",
+      "owner": "Budi",
+      "due": "Paling lambat 6 November 2026",
+      "fact_ids": [
+        "F0007"
+      ]
+    },
+    {
+      "task": "Mengoordinasikan pertemuan berikutnya; jadwal belum disepakati.",
+      "owner": "Rina",
+      "due": "Tidak disebutkan",
+      "fact_ids": [
+        "F0008"
+      ]
+    }
+  ],
+  "uncertainties": [
+    "Seluruh nama, gudang, masalah, dan tanggal adalah rekaan untuk demonstrasi portofolio, bukan data klien. Source_id: S00001, S00002; waktu: tidak dicantumkan.",
+    "Tanggal mulai uji coba akan ditentukan bersama setelah daftar barang dan format tersedia; jadwal pertemuan berikutnya juga belum disepakati. Source_id: S00001, S00002; waktu: tidak dicantumkan.",
+    "Pembelian barcode belum diputuskan dan anggaran belum ditetapkan atau disetujui. Source_id: S00002; waktu: tidak dicantumkan.",
+    "Pemeriksaan sampel transaksi masih berupa usulan; besar sampel dan target keberhasilan perlu dibahas. Source_id: S00002; waktu: tidak dicantumkan."
+  ],
+  "slides": [
+    {
+      "title": "Uji coba pencatatan inventaris",
+      "bullets": [
+        {
+          "text": "Skenario rekaan: catatan barang masuk dan keluar masih terpisah; selisih stok belum terverifikasi.",
+          "fact_ids": [
+            "F0001",
+            "F0002"
+          ]
+        },
+        {
+          "text": "Rapat memutuskan uji coba di Gudang A, bukan penerapan langsung ke semua gudang.",
+          "fact_ids": [
+            "F0004"
+          ]
+        },
+        {
+          "text": "Tanggal mulai belum ditentukan.",
+          "fact_ids": [
+            "F0005"
+          ]
+        }
+      ],
+      "notes": "Bahan ini secara eksplisit merupakan demonstrasi rekaan, bukan rekaman atau data klien. Masalah yang dibahas adalah pencatatan barang masuk dan keluar pada lembar terpisah; belum tersedia angka selisih stok yang terverifikasi. Keputusan ruang lingkupnya terbatas pada Gudang A.",
+      "layout": "cover"
+    },
+    {
+      "title": "Persiapan pencatatan satu format",
+      "bullets": [
+        {
+          "text": "Sari menyiapkan draf format dengan kolom identitas barang, jumlah masuk/keluar, saldo, tanggal transaksi, dan petugas.",
+          "fact_ids": [
+            "F0006"
+          ]
+        },
+        {
+          "text": "Draf ditargetkan 5 November 2026; Budi menyiapkan daftar barang awal paling lambat 6 November 2026.",
+          "fact_ids": [
+            "F0006",
+            "F0007"
+          ]
+        },
+        {
+          "text": "Jumlah barang belum dipastikan; angka perkiraan bukan data final.",
+          "fact_ids": [
+            "F0007"
+          ]
+        }
+      ],
+      "notes": "Usulan awal Budi adalah memulai dari daftar barang yang sudah ada dan mencatat transaksi pada satu format bersama. Sari akan menyiapkan kolom kode barang, nama barang, jumlah masuk, jumlah keluar, saldo, tanggal transaksi, dan nama petugas. Tanggal pada tugas Sari adalah tanggal draf ditargetkan; tugas Budi memiliki batas paling lambat.",
+      "layout": "actions"
+    },
+    {
+      "title": "Hal yang masih perlu dikonfirmasi",
+      "bullets": [
+        {
+          "text": "Tanggal mulai uji coba akan ditentukan bersama setelah daftar barang dan format tersedia.",
+          "fact_ids": [
+            "F0005"
+          ]
+        },
+        {
+          "text": "Pembelian pemindai barcode belum diputuskan; anggaran belum ditetapkan atau disetujui.",
+          "fact_ids": [
+            "F0009"
+          ]
+        },
+        {
+          "text": "Pemeriksaan sampel transaksi hanya usulan; ukuran sampel dan target keberhasilan belum dibahas tuntas.",
+          "fact_ids": [
+            "F0010"
+          ]
+        },
+        {
+          "text": "Rina akan mengoordinasikan pertemuan berikutnya, tetapi jadwal belum disepakati.",
+          "fact_ids": [
+            "F0008"
+          ]
+        }
+      ],
+      "notes": "Pertanyaan tentang pemindai barcode tidak menghasilkan keputusan pembelian. Usulan pemeriksaan sampel bertujuan melihat kelengkapan isian, tetapi bukan target yang telah disepakati. Pertemuan berikutnya akan dikoordinasikan Rina tanpa jadwal yang sudah ditentukan.",
+      "layout": "decisions"
+    }
+  ],
+  "context": [
+    {
+      "text": "Rapat membahas uji coba pencatatan inventaris. Materi menyebutkan bahwa skenario, nama, gudang, masalah, dan tanggal merupakan rekaan untuk demonstrasi portofolio.",
+      "fact_ids": [
+        "F0001"
+      ]
+    },
+    {
+      "text": "Latar masalah dalam skenario adalah pencatatan barang masuk dan keluar yang terpisah; angka selisih stok belum terverifikasi.",
+      "fact_ids": [
+        "F0002"
+      ]
+    }
+  ],
+  "executive_slide_summary": [
+    {
+      "text": "Catatan masuk/keluar terpisah; rapat memutuskan uji coba di Gudang A.",
+      "fact_ids": [
+        "F0002",
+        "F0004"
+      ]
+    },
+    {
+      "text": "Sari menyiapkan format; Budi menyiapkan daftar barang awal.",
+      "fact_ids": [
+        "F0006",
+        "F0007"
+      ]
+    },
+    {
+      "text": "Mulai uji coba, barcode, anggaran, dan ukuran sampel masih perlu konfirmasi.",
+      "fact_ids": [
+        "F0005",
+        "F0009",
+        "F0010",
+        "F0011"
+      ]
+    }
+  ],
+  "topics": [
+    {
+      "title": "Masalah pencatatan dan ruang lingkup uji coba",
+      "points": [
+        {
+          "text": "Dalam skenario rekaan, pencatatan barang masuk dan keluar dilakukan pada lembar terpisah dan belum ada angka selisih stok terverifikasi.",
+          "fact_ids": [
+            "F0002"
+          ]
+        },
+        {
+          "text": "Budi mengusulkan uji coba terbatas di Gudang A, dimulai dari daftar yang ada dengan transaksi pada satu format bersama.",
+          "fact_ids": [
+            "F0003"
+          ]
+        },
+        {
+          "text": "Rapat menyepakati uji coba di Gudang A, bukan penerapan langsung di semua gudang.",
+          "fact_ids": [
+            "F0004"
+          ]
+        }
+      ],
+      "status": {
+        "text": "Uji coba di Gudang A merupakan keputusan; tanggal mulai belum ditentukan.",
+        "fact_ids": [
+          "F0004",
+          "F0005"
+        ]
+      },
+      "slide_summary": "Uji coba diputuskan untuk Gudang A; tanggal mulai belum ditentukan."
+    },
+    {
+      "title": "Format dan daftar barang awal",
+      "points": [
+        {
+          "text": "Sari menyiapkan format berisi kode dan nama barang, jumlah masuk/keluar, saldo, tanggal transaksi, serta nama petugas; draf ditargetkan 5 November 2026.",
+          "fact_ids": [
+            "F0006"
+          ]
+        },
+        {
+          "text": "Budi menyiapkan daftar barang awal Gudang A paling lambat 6 November 2026; jumlahnya belum dipastikan dan perkiraan tidak boleh dianggap final.",
+          "fact_ids": [
+            "F0007"
+          ]
+        }
+      ],
+      "status": {
+        "text": "Kedua tugas disebut sebagai tugas yang pasti; tanggal mulai uji coba akan ditentukan bersama setelah format dan daftar tersedia.",
+        "fact_ids": [
+          "F0005",
+          "F0011"
+        ]
+      },
+      "slide_summary": "Sari menyiapkan format dan Budi daftar barang awal; jumlah barang belum dipastikan."
+    },
+    {
+      "title": "Evaluasi dan keputusan yang masih terbuka",
+      "points": [
+        {
+          "text": "Belum ada keputusan membeli pemindai barcode; barcode masih usulan evaluasi dan anggaran belum ditetapkan atau disetujui.",
+          "fact_ids": [
+            "F0009"
+          ]
+        },
+        {
+          "text": "Budi mengusulkan pemeriksaan sampel transaksi untuk menilai kelengkapan isian; ukuran sampel dan target keberhasilan masih perlu dibahas.",
+          "fact_ids": [
+            "F0010"
+          ]
+        },
+        {
+          "text": "Rina akan mengoordinasikan pertemuan berikutnya, tetapi jadwal belum disepakati.",
+          "fact_ids": [
+            "F0008"
+          ]
+        }
+      ],
+      "status": {
+        "text": "Pembelian barcode, tanggal mulai, anggaran, dan ukuran sampel masih perlu konfirmasi.",
+        "fact_ids": [
+          "F0011"
+        ]
+      },
+      "slide_summary": "Barcode dan pemeriksaan sampel belum menjadi keputusan atau target yang disepakati."
+    }
+  ],
+  "outcomes": [
+    {
+      "text": "Rapat menetapkan uji coba pencatatan di Gudang A, bukan penerapan langsung ke semua gudang.",
+      "fact_ids": [
+        "F0004"
+      ]
+    },
+    {
+      "text": "Tugas persiapan yang disebut pasti adalah draf format oleh Sari dan daftar barang awal oleh Budi.",
+      "fact_ids": [
+        "F0011"
+      ]
+    }
+  ],
+  "conclusions": [
+    {
+      "text": "Ruang lingkup uji coba telah diputuskan, tetapi pelaksanaannya belum memiliki tanggal mulai.",
+      "fact_ids": [
+        "F0004",
+        "F0005"
+      ]
+    },
+    {
+      "text": "Persiapan format dan daftar barang menjadi hal yang perlu tersedia sebelum tanggal mulai ditentukan bersama.",
+      "fact_ids": [
+        "F0005",
+        "F0006",
+        "F0007"
+      ]
+    }
+  ],
+  "open_decisions": [
+    {
+      "text": "Menentukan tanggal mulai uji coba setelah format dan daftar barang tersedia.",
+      "fact_ids": [
+        "F0005"
+      ]
+    },
+    {
+      "text": "Mengonfirmasi apakah membeli pemindai barcode dan menetapkan anggaran; belum ada persetujuan pembelian atau anggaran.",
+      "fact_ids": [
+        "F0009"
+      ]
+    },
+    {
+      "text": "Membahas ukuran sampel dan target keberhasilan jika usulan pemeriksaan sampel dipertimbangkan.",
+      "fact_ids": [
+        "F0010"
+      ]
+    },
+    {
+      "text": "Menentukan jadwal pertemuan berikutnya yang akan dikoordinasikan Rina.",
+      "fact_ids": [
+        "F0008"
+      ]
+    }
+  ],
+  "risk_items": [
+    {
+      "title": "Catatan terpisah dan selisih stok belum terverifikasi",
+      "description": "Dalam skenario rekaan, pencatatan barang masuk dan keluar masih terpisah dan angka selisih stok belum terverifikasi.",
+      "impact": "Dapat menyulitkan penilaian kelengkapan catatan dan kecocokan stok. Ini merupakan penilaian, bukan dampak yang dinyatakan sebagai hasil rapat.",
+      "mitigation": "Usulan untuk uji coba: gunakan satu format bersama dan pertimbangkan pemeriksaan sampel transaksi; usulan sampel belum disepakati.",
+      "level": "Belum dinilai",
+      "assessment_basis": "Analisis usulan",
+      "fact_ids": [
+        "F0002",
+        "F0003",
+        "F0010"
+      ],
+      "slide_impact": "Penilaian kelengkapan catatan dan kecocokan stok dapat terhambat; dampak ini belum dinyatakan sebagai hasil rapat.",
+      "slide_mitigation": "Usulan: satu format bersama dan pemeriksaan sampel; ukuran serta target sampel belum disepakati."
+    }
+  ],
+  "highlights": [
+    {
+      "value": "2 November 2026",
+      "label": "Tanggal rapat yang dinyatakan dalam skenario rekaan",
+      "fact_ids": [
+        "F0001"
+      ]
+    },
+    {
+      "value": "5 November 2026",
+      "label": "Tanggal draf format ditargetkan",
+      "fact_ids": [
+        "F0006"
+      ]
+    },
+    {
+      "value": "Paling lambat 6 November 2026",
+      "label": "Batas penyiapan daftar barang awal Gudang A",
+      "fact_ids": [
+        "F0007"
+      ]
+    }
+  ],
+  "meeting_date": {
+    "text": "2 November 2026 (tanggal dalam skenario demonstrasi rekaan).",
+    "fact_ids": [
+      "F0001"
+    ]
+  },
+  "participants": [
+    {
+      "text": "Rina — koordinator dalam daftar peserta rekaan.",
+      "fact_ids": [
+        "F0001"
+      ]
+    },
+    {
+      "text": "Budi — operasional dalam daftar peserta rekaan.",
+      "fact_ids": [
+        "F0001"
+      ]
+    },
+    {
+      "text": "Sari — administrasi dalam daftar peserta rekaan.",
+      "fact_ids": [
+        "F0001"
+      ]
+    }
+  ]
+}

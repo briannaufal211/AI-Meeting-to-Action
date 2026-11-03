@@ -1,0 +1,184 @@
+{
+  "title": "Rancangan bersyarat pilot kualitas catatan — ditinjau editorial",
+  "assumptions": [
+    "Semua nama, data, tanggal dan gudang rekaan; usulan ini tidak menjadi keputusan atau persetujuan rapat.",
+    "Seluruh minggu mulai, durasi dan effort bernilai null/belum ditetapkan. Tidak ada angka jadwal ilustratif. Kapasitas, volume, estimasi effort dan persetujuan kalender wajib tersedia sebelum penjadwalan.",
+    "Tanggal tugas rapat tidak digantikan kalender usulan. Semua kegiatan tambahan bersyarat, dan tidak memiliki durasi atau PIC yang dianggap sudah diterima.",
+    "Tanggal tugas rapat Sari 5 November dan Budi 6 November 2026 dipertahankan dalam laporan faktual; kalender usulan tidak menggantikannya.",
+    "Pilot hanya menilai kelengkapan dan konsistensi dokumen, bukan akurasi stok, selisih stok atau efektivitas inventaris secara luas.",
+    "Entri tanpa bukti diterima sebagai data persiapan berstatus belum terverifikasi, bukan ditolak atau dianggap stok benar.",
+    "Metode, otorisasi, kapasitas dan saldo awal untuk hitung fisik belum ada; jalur itu terpisah dan tidak dilaksanakan dalam lingkup pilot dokumen.",
+    "Jika gerbang tidak dipenuhi, tugas pelaksanaan dan evaluasi tidak dijalankan; no-go adalah hasil yang sah.",
+    "Tidak ada pembelian, perluasan gudang, angka baseline, target keberhasilan atau persetujuan yang diasumsikan telah terjadi.",
+    "Aturan aritmetis diusulkan hanya saldo catatan sebelumnya + masuk - keluar = saldo catatan berikutnya; saldo awal belum terverifikasi. Ini uji konsistensi dokumen, bukan bukti stok fisik.",
+    "Analis usulan menentukan populasi transaksi dan teknik sampling berdasar volume aktual; pemberi persetujuan A001 mengesahkannya bersama periode, log pengecualian dan batas simpulan pada A002/A003. Tanpa itu pilot tidak dimulai.",
+    "Jika data awal tidak tersedia, baseline tidak diwajibkan untuk pelaporan deskriptif. Pilihan evaluasi deskriptif tanpa klaim perbaikan harus disetujui sebelum pilot. Kebutuhan pelatihan/dukungan hasil latihan ditutup sebelum go."
+  ],
+  "capacity_assumption": "Rancangan bersyarat belum dapat dijadwalkan. Pada pertemuan A002 pemilik proses menetapkan siapa meminta dan mengesahkan estimasi, kapasitas, effort, kalender dan protokol minimum. Beban divalidasi proporsional; fungsi dapat dirangkap. Tanpa itu no-go; tidak ada angka jadwal/effort rekaan.",
+  "approvals_required": [
+    "Pemilik proses menetapkan pemberi keputusan dan fungsi seperlunya pada pertemuan A002; Rina hanya koordinator.",
+    "Kapasitas, effort, kalender serta protokol minimum harus disepakati sebelum go; belum ada angka jadwal yang disahkan.",
+    "Pilot tetap paralel dengan catatan resmi. Pengadaan, perluasan dan hitung fisik memerlukan keputusan terpisah."
+  ],
+  "recommendations": [
+    {
+      "id": "R001",
+      "title": "Siapkan daftar dan tata kelola data",
+      "slide_summary": "Terima daftar persiapan tanpa menyamakannya dengan saldo stok yang terverifikasi.",
+      "problem": "Daftar barang dan format belum selesai; angka selisih stok belum terverifikasi.",
+      "proposal": "Pertahankan tugas Sari/Budi dan tenggat sumber, lalu Rina mengoordinasikan pertemuan. Pemilik proses menetapkan kewenangan, protokol minimum dan siapa meminta/mengesahkan estimasi, kapasitas, effort serta kalender. Tanpa kesiapan, pilot belum dijadwalkan.",
+      "benefit": "Daftar persiapan dan batas kepastian datanya lebih jelas.",
+      "priority": "P1",
+      "rationale": "Persiapan harus tersedia sebelum memutuskan pilot.",
+      "tradeoff": "Perlu koordinasi minimum; beban harus divalidasi sebelum menetapkan kegiatan tambahan.",
+      "fact_ids": [
+        "F0002",
+        "F0005",
+        "F0006",
+        "F0007"
+      ]
+    },
+    {
+      "id": "R002",
+      "title": "Pilot terbatas pada kualitas catatan",
+      "slide_summary": "Protokol, kriteria hasil dan walkthrough diselesaikan sebelum keputusan final mulai.",
+      "problem": "Tanggal mulai, metode sampling dan target evaluasi belum disepakati.",
+      "proposal": "Paket minimum: otorisasi, format/kolom wajib, sampling dan kriteria disetujui, uji sintetis, go/no-go, pilot paralel dan evaluasi. Fungsi dapat dirangkap. Pada penutupan, minta keputusan kebutuhan verifikasi stok melalui gerbang terpisah bila diperlukan.",
+      "benefit": "Pilot dapat dievaluasi sesuai indikator dokumen yang disetujui.",
+      "priority": "P1",
+      "rationale": "Mencegah pelaksanaan sebelum metode, kapasitas dan kewenangan siap.",
+      "tradeoff": "Rancangan bersyarat belum dapat dijadwalkan. Tidak mengukur akurasi stok fisik atau menganggap risikonya selesai.",
+      "fact_ids": [
+        "F0002",
+        "F0004",
+        "F0005",
+        "F0010"
+      ]
+    }
+  ],
+  "tasks": [
+    {
+      "id": "A001",
+      "recommendation_id": "R001",
+      "phase": "Rancangan bersyarat",
+      "priority": "P1",
+      "task": "Terima format Sari dan daftar Budi sesuai tenggat rapat rekaan; catat kesiapan data tanpa mengganti pemilik tugas.",
+      "slide_summary": "Terima format Sari dan daftar Budi sesuai tenggat rapat rekaan; catat kesiapan data tanpa mengganti pemilik tugas.",
+      "deliverable": "Format Sari (5 November 2026), daftar Budi (paling lambat 6 November 2026) dan log item belum jelas.",
+      "acceptance": "Tugas sumber berjalan tanpa menunggu otorisasi pilot. Penerimaan persiapan tidak mensyaratkan bukti lengkap. Identitas minimum untuk pilot dan pengecualian ditandai; jumlah/saldo bukan stok terverifikasi.",
+      "owner_role": "Sari/Budi tetap pemilik tugas sumber; fungsi penerima belum ditetapkan.",
+      "start_week": null,
+      "duration_weeks": null,
+      "effort_person_days": null,
+      "depends_on": [],
+      "resources": "Data yang tersedia, format pencatatan dan waktu personel yang harus dikonfirmasi.",
+      "risk": "Data atau kapasitas belum tersedia; hasil dapat disalahartikan sebagai verifikasi stok.",
+      "mitigation": "Catat keterbatasan, minta otorisasi, hentikan bila syarat gerbang tidak terpenuhi. Tidak klaim akurasi stok.",
+      "kpi": "Jumlah entri dan penanda belum terverifikasi dilaporkan deskriptif; bukan akurasi stok.",
+      "assumptions": "PIC masih usulan kecuali tugas rapat Sari/Budi. Mulai, durasi dan effort belum ditetapkan; memerlukan penunjukan, kapasitas, volume dan persetujuan kalender. Prasyarat wajib dipenuhi; opsi tanpa kebutuhan tidak dijalankan.",
+      "fact_ids": [
+        "F0006",
+        "F0007",
+        "F0002"
+      ]
+    },
+    {
+      "id": "A002",
+      "recommendation_id": "R001",
+      "phase": "Rancangan bersyarat",
+      "priority": "P1",
+      "task": "Rina mengoordinasikan pertemuan setelah format/daftar tersedia; mintakan keputusan minimum dan kelayakan beban sebelum menjadwalkan pilot.",
+      "slide_summary": "Rina mengoordinasikan pertemuan setelah format/daftar tersedia; mintakan keputusan minimum dan kelayakan beban sebelum menjadwalkan pilot.",
+      "deliverable": "Catatan pertemuan/tanggal mulai atau keputusan belum bisa mulai; penunjukan pihak berwenang dan estimasi yang diminta.",
+      "acceptance": "Rina hanya koordinator, bukan otomatis pemberi persetujuan. Pemilik proses sesuai mandat menetapkan pemberi keputusan dan PIC seperlunya; meminta/mengesahkan kapasitas, effort, kalender, protokol minimum dan beban. Jika belum cukup: no-go.",
+      "owner_role": "Rina: koordinasi sesuai sumber. Pemberi keputusan/penyedia estimasi harus ditetapkan pemilik proses.",
+      "start_week": null,
+      "duration_weeks": null,
+      "effort_person_days": null,
+      "depends_on": [
+        "A001"
+      ],
+      "resources": "Data yang tersedia, format pencatatan dan waktu personel yang harus dikonfirmasi.",
+      "risk": "Data atau kapasitas belum tersedia; hasil dapat disalahartikan sebagai verifikasi stok.",
+      "mitigation": "Catat keterbatasan, minta otorisasi, hentikan bila syarat gerbang tidak terpenuhi. Tidak klaim akurasi stok.",
+      "kpi": "Ketersediaan isian kapasitas dan volume; belum menetapkan target angka.",
+      "assumptions": "PIC masih usulan kecuali tugas rapat Sari/Budi. Mulai, durasi dan effort belum ditetapkan; memerlukan penunjukan, kapasitas, volume dan persetujuan kalender. Prasyarat wajib dipenuhi; opsi tanpa kebutuhan tidak dijalankan.",
+      "fact_ids": [
+        "F0005",
+        "F0008",
+        "F0010",
+        "F0011"
+      ]
+    },
+    {
+      "id": "A003",
+      "recommendation_id": "R002",
+      "phase": "Rancangan bersyarat",
+      "priority": "P1",
+      "task": "Jika minimum disepakati: validasi format dengan kasus sintetis, lakukan go/no-go, lalu pilot paralel tanpa mengganti pencatatan resmi.",
+      "slide_summary": "Jika minimum disepakati: validasi format dengan kasus sintetis, lakukan go/no-go, lalu pilot paralel tanpa mengganti pencatatan resmi.",
+      "deliverable": "Checklist uji, keputusan go/no-go dan catatan pilot bila diizinkan; tanpa izin dicatat tidak dijalankan.",
+      "acceptance": "Sebelum go: kolom, populasi/sampel/periode, indikator, pengecualian, stop-rule, konflik, kapasitas/kalender dan dukungan disahkan. Latihan hanya validasi prosedur; masalah kritis ditutup. Pilot paralel mengikuti protokol; tidak menimpa sumber.",
+      "owner_role": "Usulan fungsi pelaksana/pengamat dan pemberi keputusan ditetapkan sesuai mandat pada A002; boleh dirangkap.",
+      "start_week": null,
+      "duration_weeks": null,
+      "effort_person_days": null,
+      "depends_on": [
+        "A002"
+      ],
+      "resources": "Data yang tersedia, format pencatatan dan waktu personel yang harus dikonfirmasi.",
+      "risk": "Data atau kapasitas belum tersedia; hasil dapat disalahartikan sebagai verifikasi stok.",
+      "mitigation": "Catat keterbatasan, minta otorisasi, hentikan bila syarat gerbang tidak terpenuhi. Tidak klaim akurasi stok.",
+      "kpi": "Hasil skenario latihan tercatat; tidak mengklaim efektivitas operasional.",
+      "assumptions": "PIC masih usulan kecuali tugas rapat Sari/Budi. Mulai, durasi dan effort belum ditetapkan; memerlukan penunjukan, kapasitas, volume dan persetujuan kalender. Prasyarat wajib dipenuhi; opsi tanpa kebutuhan tidak dijalankan.",
+      "fact_ids": [
+        "F0003",
+        "F0004",
+        "F0005",
+        "F0010"
+      ]
+    },
+    {
+      "id": "A004",
+      "recommendation_id": "R002",
+      "phase": "Rancangan bersyarat",
+      "priority": "P1",
+      "task": "Evaluasi kualitas catatan atau tutup no-go; mintakan keputusan terpisah apakah verifikasi stok fisik diperlukan.",
+      "slide_summary": "Evaluasi kualitas catatan atau tutup no-go; mintakan keputusan terpisah apakah verifikasi stok fisik diperlukan.",
+      "deliverable": "Laporan deskriptif/perbaikan sesuai mode disepakati; keputusan tidak perlu/perlu gerbang stok terpisah/belum dapat diputuskan.",
+      "acceptance": "Ikuti kriteria dan penutupan protokol; tanpa baseline tidak klaim perbaikan. Pihak berwenang A002 meninjau kebutuhan stok saat penutupan/evaluasi. Jika perlu: otorisasi, metode hitung, saldo awal, kapasitas dan kriteria wajib disetujui sebelum hitung fisik.",
+      "owner_role": "Fungsi evaluasi dan pemberi keputusan yang ditetapkan A002; bukan penunjukan orang baru dari AI.",
+      "start_week": null,
+      "duration_weeks": null,
+      "effort_person_days": null,
+      "depends_on": [
+        "A003"
+      ],
+      "resources": "Data yang tersedia, format pencatatan dan waktu personel yang harus dikonfirmasi.",
+      "risk": "Data atau kapasitas belum tersedia; hasil dapat disalahartikan sebagai verifikasi stok.",
+      "mitigation": "Catat keterbatasan, minta otorisasi, hentikan bila syarat gerbang tidak terpenuhi. Tidak klaim akurasi stok.",
+      "kpi": "Indikator protokol dilaporkan bersama denominator dan keterbatasan; tidak menyimpulkan akurasi inventaris.",
+      "assumptions": "PIC masih usulan kecuali tugas rapat Sari/Budi. Mulai, durasi dan effort belum ditetapkan; memerlukan penunjukan, kapasitas, volume dan persetujuan kalender. Prasyarat wajib dipenuhi; opsi tanpa kebutuhan tidak dijalankan.",
+      "fact_ids": [
+        "F0002",
+        "F0009",
+        "F0010",
+        "F0011"
+      ]
+    }
+  ],
+  "operational_protocol": {
+    "mandat_dan_peran": "Ini usulan prosedur, belum keputusan rapat. Pemilik proses sesuai mandat organisasi diminta menunjuk pemberi keputusan dan penanggung jawab data. Sari/Budi tetap memegang tugas sumber; data kapasitas disediakan pemilik proses/petugas yang relevan. Fungsi penyusun, pengamat dan pelaksana dapat dirangkap bila layak, ditunjuk hanya bila diperlukan menurut protokol. Tidak diasumsikan telah ada penunjukan atau persetujuan. Tugas rapat dan penerimaan hasil Sari/Budi tidak bergantung pada A001; hanya aktivitas pilot tambahan memerlukan mandat tersebut.",
+    "minimum_daftar": "Untuk kesiapan pilot, daftar perlu identitas yang membedakan barang (kode bila ada, nama/deskripsi bila belum), status verifikasi dan cara menandai item tidak dikenal. Pemberi keputusan mengesahkan minimum sebelum go. Daftar persiapan tetap diterima sebagai penyelesaian tugas sumber; jika minimum pilot belum terpenuhi, catat pengecualian dan tunda go. Jangan membuat kode, jumlah atau bukti fiktif.",
+    "jenis_evaluasi": "Sebelum pilot pilih dan sahkan: deskriptif (tanpa baseline/target, hanya hasil teramati) atau evaluasi perbaikan (hanya jika baseline pembanding dan target tervalidasi tersedia). Baseline berarti observasi awal, bukan target sukses. Deskriptif tidak mensyaratkan baseline dan tidak menyimpulkan perbaikan/keberhasilan. Pilihan, denominator dan batas simpulan disahkan sebelum mulai.",
+    "populasi_dan_sampel": "Tetapkan periode, populasi transaksi yang boleh diakses, cakupan Gudang A, ukuran sampel dan metode pemilihan menurut volume aktual. Jika volume belum diketahui, kumpulkan terlebih dahulu; jangan menetapkan angka sampel rekaan. Catat periode, populasi, metode, sampel terpilih dan pengecualian. Tanpa cakupan dan metode yang disahkan, no-go.",
+    "indikator": "Kelengkapan = isian wajib terisi dibagi seluruh isian wajib pada sampel. Kolom wajib disahkan dari format sumber sebelum pilot. Konsistensi aritmetis = catatan dengan saldo sebelumnya+masuk-keluar sama dengan saldo berikutnya dibagi catatan yang dapat diuji. Catatan tak dapat diuji dilaporkan terpisah. Saldo awal belum terverifikasi; indikator ini bukan kecocokan atau akurasi stok fisik.",
+    "checklist_latihan": "Sebelum latihan sahkan checklist: identifikasi item; masukkan kolom wajib; catat masuk/keluar; uji saldo aritmetis; tandai kolom kosong/item tak dikenal/saldo tak dapat diuji; log pengecualian; lakukan eskalasi. Gunakan data sintetis yang mewakili semua kasus. Lulus bila langkah dan hasil tiap kasus sesuai harapan yang disahkan, bukti dicatat, dan kesalahan kritis ditutup. Kritis = data hilang, angka salah lolos sebagai benar, konflik/akses tak sah tidak ditandai. Ini validasi prosedur, bukan pembuktian operasi nyata.",
+    "paralel_dan_konflik": "Pilot hanya salinan paralel, catatan resmi berjalan tetap otoritatif dan tidak ditimpa/diganti. Sebelum mulai, sahkan aturan perbandingan dan penanganan konflik: beda catatan dilog, diperiksa terhadap dokumen sumber yang diizinkan, dan diputuskan pemberi keputusan. Tidak memperbaiki catatan resmi tanpa kewenangan dan jejak perubahan; konflik yang tak terselesaikan tetap ditandai.",
+    "stop_dan_eskalasi": "Pertemuan A002 menetapkan penanggung jawab penghentian dan pemberi keputusan eskalasi; fungsi ini boleh dirangkap jika disahkan. Stop jika akses tak sah, data hilang, angka salah diterima benar, konflik sumber tak dapat diselesaikan, atau kapasitas/prosedur tak terpenuhi. Hentikan input pilot, simpan bukti/log tanpa mengubah sumber, beri tahu pemberi keputusan. Hanya lanjut setelah penyebab diselesaikan dan go baru dicatat.",
+    "penutupan": "A002/A003 menetapkan aturan: tutup evaluasi setelah periode/sampel disepakati tercapai dan pengecualian diklasifikasikan. Koreksi hanya berdasar sumber, diotorisasi dan dicatat. Jika data minimum tak cukup atau masalah kritis terbuka, laporan tidak konklusif; pemberi keputusan memilih perbaiki/ulang atau tutup tanpa kesimpulan. Pengulangan/perluasan bukan otomatis dan perlu keputusan terpisah. Deskriptif tidak menghasilkan klaim berhasil.",
+    "keputusan_terbuka": "Register opsional sejak awal memuat tanggal mulai, sampel/target atau mode deskriptif, pertemuan berikutnya, barcode, anggaran dan kebutuhan verifikasi stok. Catat belum diputuskan serta pihak yang diminta mengonfirmasi sesuai mandat, tanpa penugasan baru tersirat. Rina hanya disebut sebagai koordinator pertemuan sesuai sumber, bukan otomatis pemberi seluruh persetujuan. Register boleh ditutup tanpa kajian/pengadaan. Setelah evaluasi, bila ada kebutuhan stok fisik, mintakan gerbang terpisah: otorisasi, metode hitung, saldo awal, kapasitas dan kriteria. Tanpa itu tidak dilakukan; risiko stok belum tertangani.",
+    "proporsionalitas": "Empat paket kerja, bukan tujuh lapis persetujuan. Rincian protokol merupakan checklist minimum sesuai risiko, bukan jabatan/tahap tambahan yang wajib. Pada A002, pemilik proses menilai kebutuhan setiap fungsi dan beban, boleh merangkap peran atau menyederhanakan prosedur tanpa menghilangkan kontrol data. Jika kapasitas tidak memadai, no-go atau lingkup dikurangi dengan keputusan tercatat.",
+    "keputusan_stok": "Pada evaluasi/penutupan A004, fungsi evaluasi meminta pemberi keputusan yang ditetapkan A002 menentukan: tidak perlu verifikasi stok, perlu gerbang terpisah, atau belum dapat diputuskan. Jika perlu, belum boleh hitung fisik sebelum mandat/izin, metode, saldo awal, kapasitas dan kriteria disetujui. Pilot dokumen tidak menangani risiko akurasi stok fisik."
+  }
+}
